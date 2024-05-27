@@ -758,45 +758,61 @@ Transformer是特别有效，不仅仅因为其注意力机制的能力，也因
 <br />
 
 ### Breakthrough #4: Harnessing Randomness
-### 突破 #4：
-
+### 突破 #4 利用随机性
 The CNN introduced the ability to understand samples from the complex distribution of images.
+CNN引入了一种能力，去理解图片中复杂分布的样本。
 
 However, the problem of synthesizing images appeared to be much harder - CNNs could learn to filter out the details in images and focus on high-level features, whereas image geneartion models would need to learn to create both high-level features and complex details.
+但是，合成图片中的问题将变得更难-CNN是能学习去过滤出图片中的细节，并聚焦在高层的特征上，由于图片生成模型将需要去学习同时创建高层的特征和复杂的细节。
 
 Image generation models like [Variational Auto-Encoders](/05-image-generation/02-vae/04-vae.ipynb) and [Diffusion](/05-image-generation/03-diffusion/05-diffusion.ipynb) models learn to generate both high-level features and complex details by introducing random sampling and noise directly into their architectures.
+图片生成模型，类似变分自动编码器和扩散模型，学习去同时生成高层的特征和复杂的细节，通过引入随机采样和噪声，直接用到这个架构中。
 
 VAEs create a bottleneck that forces the models to learn useful representations in a low dimensional space. Then, they add back noise on top of these representations through random sampling. **So VAEs start by learning representations, and then add noise.**
+VAE创建了一个瓶颈，强制模型去学习有用的表征低纬度空间。然后，其加回噪声到这些表征的顶部，通过随机采样的方式。“这样VAE开始是通过学习表征，并随即加上噪声”
 
 **Diffusion models, instead, starts with noise, and learn to add information into to the noise slowly.**
+扩散模型，而是，开始用到噪声，并学习去缓慢加入信息到噪声。
 
 Without these designs, modern image generation models like [Stable Diffusion](https://arxiv.org/abs/2112.10752) and [DALL E](/05-image-generation/05-dall-e/) wouldn't exist.
+没有这些世界，现代的图片生成模型，类似稳定扩散和DALLE将不会村子。
 
 <br />
 
 ### Breakthrough #5: Embeddings
+### 突破 #5：嵌入
 
 The [Word2Vec](/03-sequence-modeling/04-word2vec/03-word2vec.ipynb) model popularized the concept of text embeddings that preserve semantic and syntactic meaning by forcing models to create vector representations for concepts with interesting properties.
+这些Word2Vec模型推动了文本嵌入的概念，这样保留予以和句法的含义，通过强制模型去创建向量表征，用在一些有趣特征的概念表征。
 
 A commonly used example of the power of such embeddings is that the following equation holds true in the embedding space: Emedding("King") - Embedding("Man") + Embedding("Woman") = Embedding("Queen").
+一个通常被用到的例子关于这些嵌入的能力，是沿用了同等保持正确的在嵌入空间：嵌入（“国王”）-嵌入（“男人”）+嵌入（“女人”）=嵌入（“王后”）
 
 Embeddings show us how the relationships between concepts can be represented in a highly condensed format.
+这些嵌入显示了在这些概念之间的关系，能被表征为高度浓缩的关系。
 
 Later models like [CLIP](/05-image-generation/04-clip/02-clip.ipynb) based on the [Transformer](/04-transformers/07-vision-transformer/02-vision-transformer.ipynb) architecture have led to complex embedding spaces mapping understandings of concepts across modalities to a single representation space, enabling multi-modal models like [DALL E 2](/05-image-generation/05-dall-e/02-dall-e-2.pdf).
+随后，类似CLIP的模型基于Transformer架构，已经得到了复杂的嵌入空间映射，从基于多个模态理解的概念映射到单一表征的空间，能使得多模态的模型，类似DALL E 2。
 
 <br />
 
 ### "Don't Touch the Architecture"
+### “不要触碰这些架构”
 
 For the past several years after the introduction of the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb), efforts have mainly been focused around scaling up the parameters and data fed into transformers without heavily adjusting the inductive biases.
+对于在引入了Transformer之后过去的一些年，一些努力主要聚焦在放大参数和数据去使用到Transformer中，没有重大的去调整归纳偏置。
 
 This suggests a stagnation in architectural improvement motivated by the efficacy of the Transformer, which may suggest something about the inherent efficacy of the inductive bias of [Attention](/03-sequence-modeling/06-attention/) in intelligence.
+这样使得在提升Transformer效率来驱动的架构提升停滞不前，这样可能说明了智能中注意力的归纳偏置的某些固有的效率。
 
 **This explicit desire not to change architectures anymore is [discussed by Andrej Karpathy in this clip](https://www.youtube.com/watch?v=9uw3F6rndnA).**
+这个显示的愿望不会改变更多的架构，这在Andrej Karpartty的视频片段中讨论了。
 
 Instead of changing base architectures, many state-of-the-art models have been combining different existing architectures together - for example, the [Diffusion](/05-image-generation/03-diffusion/05-diffusion.ipynb) model design uses the [U-Net](/01-deep-neural-networks/04-u-net/02-u-net.ipynb) underneath, and [DALL-E-2](/05-image-generation/05-dall-e/02-dall-e-2.pdf) uses both [CLIP](/05-image-generation/04-clip/02-clip.ipynb) (which is built with the [Vision Transformer](/04-transformers/07-vision-transformer/02-vision-transformer.ipynb)) and a [Diffusion](/05-image-generation/03-diffusion/05-diffusion.ipynb) model.
+不同于改变基础架构的方法，大部分最好的模型已经被组合到不同现有的架构一块。例如，扩散模型设计用了U-Net作为底层，并且DALL-E-2同时用了CLIP（其构建用了Vision Transformer），和一个扩散模型。
 
 The combination of different working architectures has also resulted in the increasing multi-modality of models, indicative in the recent [announcement of GPT-4o](https://openai.com/index/hello-gpt-4o/) which trains a single base model on a variety of modalities (likely combining a variety of architectures underneath, although the implementation details are unreleased.).
+这个组合了不同工作的架构已经在不断增加的多模态模型出现，说明近期发布的GPT-4o训练了单独一个基础模型在一个多模态上（类似组合了一个多个底层的架构，尽管实现的细节没有公布）
 
 <br />
 
