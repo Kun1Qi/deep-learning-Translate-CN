@@ -67,59 +67,99 @@ The rest of this page is my breakdown of everything we can learn from this histo
 # Overview
 
 The most interesting part of my deep-dive came from noticing a clear trend across all the key advancements, which has completely reframed how I understand deep learning:
+我这里所深入的最有意思的部分是来自对所有关键进展和趋势的清楚论述，这完全重构了我的深度学习的理解。
 
 > [!IMPORTANT]
->
+> 重点
+> 
 > **There are 7 simple constraints that limit the capacity of digital intelligence:**
 >
+> 这里有7个简单的约束限制了数字智能的能力。
 > 1. data
+> 1. 数据
 > 2. parameters
+> 2. 参数
 > 3. optimization & regularization
+> 3. 优化和正则化
 > 4. architecture
+> 4. 架构
 > 5. compute
+> 5. 计算
 > 6. compute efficiency
+> 6. 计算效率
 > 7. energy
+> 7. 能源
 >
 > **The entire history of deep learning can be seen as the series of advancements that have gradually raised the ceiling on these constraints**, enabling the creation of increasingly intelligent systems.
+> 整个深度学习的历史能本看作一系列的提升，已经逐渐到达这些约束的上限，使得能构建逐渐智能化的系统。
 
 It's impossible to understand where we're going without first understanding how we got here - and it's impossible to understand how we got here without understanding these constraints, which have always governed the rate of progress.
+如果我们不首先理解所处的位置，将无法理解要去哪里——同时，也不可能不了解这些约束就能知道我们的现状，因为这些约束一直影响着进步的效率。
 
 By understanding them, we can also explore a few related questions:
+通过这些理解，我们也能探索一些新的相关问题：
 
 - How is progress made in deep learning?
+- 这个深度学习的进入如何做到的？
 - Where do the ideas that drive progress in deep learning come from?
+- 这些想法哪里来的，能驱动深度学习的进步？
 - How have our narratives about digital intelligence changed over time?
+- 我们如何论述数字智能随着实践的变化？
 - What does deep learning teach us about our own intelligence?
+- 深度学习能对我们自身拥有的智能有什么帮助？
 - Where is the future of deep learning headed?
+- 深度学习未来的方向在哪里？
 
 So, let's start by understanding these constraints from first principles.
+这样，让我们开始理解这些约束，基于第一性原理。
 
 <br />
 
 # 1. Constraints
+  1.约束
 
 We can define intelligence[^1] as the ability to accurately model reality[^2]. Practically, we're interested in models of reality that are useful for performing economically valuable tasks.
+我们能定义智能为一种能力，可以准确的建模现实世界。实际上，我们关注现实世界的建模，可以用来实现一些有经济价值的任务。
 
 The goal of deep learning is to produce accurate models of reality for these useful tasks by:
+深度学习的目标是去生成准确的现实世界的模型用于这些任务：
 
 1. Treating the true models that describe reality as complex probability distributions[^3]
+1. 用正确的模型来描述真实的世界，使其成为一个复杂的概率分布。
 2. Creating neural networks capable of modeling complex probability distributions
+2. 创建神经网络的能力，去建模复杂的概率分布。
 3. Training these networks to learn to model the probability distributions that underlie reality
+3. 训练这些网络去学习建模概率分布，能表征真实世界。 
 
 In this view, creating intelligence with deep learning involves just two steps:
+从这个视角，创建智能用到深度学习，只是涉及两个步骤：
 
 1. Collect useful information about reality (collect data)
+1. 收集有用的关于真实世界的信息（收集数据）
 2. Create a neural network that can effectively learn from this information (model data)
+2. 创建一个神经网络，能有效的学习这些信息（模型数据）
 
 The only way to increase the intelligence of our model is to improve how well we accomplish each of these steps.
+唯一的方法去提升我们模型的智能，就是去提升我们要实现的每一个步骤。
 
 With this in mind, we can look at the constraints that govern this process. Let's start by understanding the constraint on data.
+基于这个想法，我们能看到这些约束涉及了这个过程。让我们开始理解数据上的这些约束。
 
 <br />
 
-[^1]: Everyone has different definitions of intelligence, all of which are useful in different contexts, and none of which capture the full picture of what this word means. People may disagree with the specifics of this definition. I've chosen this one for the sake of simplicity to clearly frame what we're trying to achieve with deep learning from an economic perspective - I'm less concerned with it's philosophical implications here.
-[^2]: Karl Friston's [Free Energy Principle](https://www.nature.com/articles/nrn2787) suggests that this definition of intelligence is also valid in the context of the brain (beware, the paper is explained with unnecessary mathematical complexity, but the core concept it describes is simple). Notably, intelligence systems create models of the world and then use those models to perform _active inference_ to modify their environments.
-[^3]: This idea may seem unintuitive at first. But it's actually saying something very simple: (1) reality has a set of rules that govern what happens (2) we can model these rules by assigning probabilities to what's likely to happen, given what has already happened (3) thus, these models are probability distributions. Again, the [Free Energy Principle](https://www.nature.com/articles/nrn2787) supports this view of modeling reality.
+[^1]: Everyone has different definitions of intelligence, all of which are useful in different contexts, and none of which capture the full picture of what this word means. People may disagree with the specifics of this definition. I've 
+      每一个人对智能有不同的定义，所有这些不同的定义都基于不同的领域，但是都无法完整的概括这个词的含义。人们可能不同意这个定义的论述。我已经
+chosen this one for the sake of simplicity to clearly frame what we're trying to achieve with deep learning from an economic perspective - I'm less concerned with it's philosophical implications here.
+有目的选择了一个简单清楚的描述，就是尝试去用深度学习实现经济角度的目标。我在这里没有关注其哲学的意义。
+
+[^2]: Karl Friston's [Free Energy Principle](https://www.nature.com/articles/nrn2787) suggests that this definition of intelligence is also valid in the context of the brain (beware, the paper is explained with unnecessary mathematical 
+      Karl Friston的自由能量法则论述的这个智能的定义，也可以用在大脑相关的内容中（当心，这篇论文的了中包含了不必要的复杂数学
+complexity, but the core concept it describes is simple). Notably, intelligence systems create models of the world and then use those models to perform _active inference_ to modify their environments.
+但是，核心概念的论述是简洁的）。注意，智能系统创建世界模型，并用这些模型去做活动的推理，来改变其环境。
+[^3]: This idea may seem unintuitive at first. But it's actually saying something very simple: (1) reality has a set of rules that govern what happens (2) we can model these rules by assigning probabilities to what's likely to happen, 
+      这个想法首先看起来不够直观。但是其实际论述的事情很简单：（1）现实世界有一组规则能控制什么会发生（2）我们能建模这些规则，用了分配概率的方式，去定义什么要发生，
+given what has already happened (3) thus, these models are probability distributions. Again, the [Free Energy Principle](https://www.nature.com/articles/nrn2787) supports this view of modeling reality.
+量化已经发生的（3）因此，这些模型都是概率分布。而且，自由能量法则支持这个建模真实世界的观点。
 
 ## 1.1. Data
 
