@@ -200,7 +200,7 @@ This is the first constraint on the intelligence of a neural network.
 > 注意
 >
 > **Constraint #1: A model can only be as good as the dataset it was trained on.**
-> 约束#1：一个模型只能训练到与其所用数据集的一样的质量。
+> 约束#1：一个模型只能训练达到与其所用数据集一样的质量。
 >
 > Specifically, the cap on how well a model can approximate the true distribution is determined by how much information about the true distribution is contained within the dataset.
 > 确切的，一个模型有多好的去近似真实的分布，是由包含在其训练数据集中的真实分布的信息数量决定。
