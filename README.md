@@ -76,19 +76,19 @@ The most interesting part of my deep-dive came from noticing a clear trend acros
 >
 > 这里有7个简单的约束限制了数字智能的能力。
 > 1. data
-> 1. 数据
+>    数据
 > 2. parameters
-> 2. 参数
+>    参数
 > 3. optimization & regularization
-> 3. 优化和正则化
+>    优化和正则化
 > 4. architecture
-> 4. 架构
+>    架构
 > 5. compute
-> 5. 计算
+>    计算
 > 6. compute efficiency
-> 6. 计算效率
+>    计算效率
 > 7. energy
-> 7. 能源
+>    能源
 >
 > **The entire history of deep learning can be seen as the series of advancements that have gradually raised the ceiling on these constraints**, enabling the creation of increasingly intelligent systems.
 > 整个深度学习的历史能本看作一系列的提升，已经逐渐到达这些约束的上限，使得能构建逐渐智能化的系统。
@@ -125,19 +125,19 @@ The goal of deep learning is to produce accurate models of reality for these use
 深度学习的目标是去生成准确的现实世界的模型用于这些任务：
 
 1. Treating the true models that describe reality as complex probability distributions[^3]
-1. 用正确的模型来描述真实的世界，使其成为一个复杂的概率分布。
+   用正确的模型来描述真实的世界，使其成为一个复杂的概率分布。
 2. Creating neural networks capable of modeling complex probability distributions
-2. 创建神经网络的能力，去建模复杂的概率分布。
+   创建神经网络的能力，去建模复杂的概率分布。
 3. Training these networks to learn to model the probability distributions that underlie reality
-3. 训练这些网络去学习建模概率分布，能表征真实世界。 
+   训练这些网络去学习建模概率分布，能表征真实世界。 
 
 In this view, creating intelligence with deep learning involves just two steps:
 从这个视角，创建智能用到深度学习，只是涉及两个步骤：
 
 1. Collect useful information about reality (collect data)
-1. 收集有用的关于真实世界的信息（收集数据）
+   收集有用的关于真实世界的信息（收集数据）
 2. Create a neural network that can effectively learn from this information (model data)
-2. 创建一个神经网络，能有效的学习这些信息（模型数据）
+   创建一个神经网络，能有效的学习这些信息（模型数据）
 
 The only way to increase the intelligence of our model is to improve how well we accomplish each of these steps.
 唯一的方法去提升我们模型的智能，就是去提升我们要实现的每一个步骤。
