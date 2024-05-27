@@ -1,4 +1,5 @@
 # deep-learning
+  深度学习
 
 A deep-dive on the entire history of deep learning, highlighting the series of innovations that got us from simple feed-forward networks to GPT-4o.
 
@@ -91,7 +92,7 @@ The most interesting part of my deep-dive came from noticing a clear trend acros
 >    能源
 >
 > **The entire history of deep learning can be seen as the series of advancements that have gradually raised the ceiling on these constraints**, enabling the creation of increasingly intelligent systems.
-> 整个深度学习的历史能本看作一系列的提升，已经逐渐到达这些约束的上限，使得能构建逐渐智能化的系统。
+> 整个深度学习的历史能被看作一系列的提升，已经逐渐到达这些约束的上限，使得能构建逐渐智能化的系统。
 
 It's impossible to understand where we're going without first understanding how we got here - and it's impossible to understand how we got here without understanding these constraints, which have always governed the rate of progress.
 如果我们不首先理解所处的位置，将无法理解要去哪里——同时，也不可能不了解这些约束就能知道我们的现状，因为这些约束一直影响着进步的效率。
@@ -100,7 +101,7 @@ By understanding them, we can also explore a few related questions:
 通过这些理解，我们也能探索一些新的相关问题：
 
 - How is progress made in deep learning?
-- 这个深度学习的进入如何做到的？
+- 这些深度学习的进步如何做到的？
 - Where do the ideas that drive progress in deep learning come from?
 - 这些想法哪里来的，能驱动深度学习的进步？
 - How have our narratives about digital intelligence changed over time?
