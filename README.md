@@ -113,7 +113,7 @@ By understanding them, we can also explore a few related questions:
 - Where do the ideas that drive progress in deep learning come from?
 - 这些想法哪里来的，能驱动深度学习的进步？
 - How have our narratives about digital intelligence changed over time?
-- 我们如何论述数字智能随着实践的变化？
+- 我们如何论述数字智能随着时间的变化？
 - What does deep learning teach us about our own intelligence?
 - 深度学习能对我们自身拥有的智能有什么帮助？
 - Where is the future of deep learning headed?
@@ -171,126 +171,199 @@ given what has already happened (3) thus, these models are probability distribut
 量化已经发生的（3）因此，这些模型都是概率分布。而且，自由能量法则支持这个建模真实世界的观点。
 
 ## 1.1. Data
+   1.1. 数据
 
 ![constraint-1-data](./images/readme/constraint-1-data.png)
 
 We've established that the goal of deep learning is to model the probability distributions that describe reality.
+我们已经构建了深度学习的目标，就是去建模概率分布去表达真实的世界。
 
 Let's call the distribution that we're trying to model for a specific task the _true distribution_. In order to learn about the true distribution, we collect many samples from it. These samples make up a _dataset_.
+我们把这些尝试建模一个特定任务的分布称为真实的分布。为了去学习这个真实的分布，我们在其之上收集大量的样本。这些样本构成了一个数据集。
 
-The dataset contains some information about the true distribution, but it doesn't contain _all_ information about the true distribution[^4]. Because of this, the dataset represents an approximation of the true distribution, which we'll call the _empirical distribution_.
+The dataset contains some information about the true distribution, but it doesn't contain _all_ information about the true distribution[^4]. Because of this, the dataset represents an approximation of the true distribution, which we'll 
+这个数据集包含了一些信息是关于真实分布的，但是没有包含这个真实分布的全部信息。因此，这个数据集近似的表征了这个真实分布，被我们称为经验分布。
+call the _empirical distribution_.
 
 **At best, we can expect our neural network to learn to model this empirical distribution[^5].**
+最好的情况，我们能期望神经网络去学习建模这个经验分布。
 
-However, our original goal was to model the true distribution. To account for this, we need the empirical distribution to be **a good approximation** of the true distribution. The quality of this approximation determines the cap of how good a model trained on the dataset can get.
+However, our original goal was to model the true distribution. To account for this, we need the empirical distribution to be **a good approximation** of the true distribution. The quality of this approximation determines the cap of how 
+但是，我们开始的目标是去建模真实的分布。因此，我们需要这个经验分布要成为一个很好近似的真实分布。
+good a model trained on the dataset can get.
+这个近似的质量决定了训练在这个数据集上的模型有多好。
 
 This is the first constraint on the intelligence of a neural network.
+这是关于一个神经网络智能上的第一个约束。
 
 > [!NOTE]
+> 注意
 >
 > **Constraint #1: A model can only be as good as the dataset it was trained on.**
+> 约束#1：一个模型只能训练到与其所用数据集的一样的质量。
 >
 > Specifically, the cap on how well a model can approximate the true distribution is determined by how much information about the true distribution is contained within the dataset.
+> 确切的，一个模型有多好的去近似真实的分布，是由包含在其训练数据集中的真实分布的信息数量决定。
 
 <br />
 
 [^4]: Assuming the true distribution we're trying to model is sufficiently complex to the point where including all information about it in the dataset would be intractable. This is almost always the case in deep learning.
+      假设我们尝试建模的真实的分布是有足够的复杂性，而包含所有这些复杂性在训练数据集中是做不到的。这几乎在深度学习中一直存在。
 [^5]: Assuming the model perfectly represents all information that exists within the dataset, which rarely happens.
+      假设模型完美的表征了数据集中的全部信息，而这很少发生。
 
 ### A Good Approximation
+### 一个很好的近似
 
 To make the empirical distribution a better approximation of the true distribution, we need to include more information about the true distribution in the dataset.
+要使得经验分布能更好的近似真实分布，我们需要包含更多的真实分布的信息到这个数据集中。
 
 We can increase the total information in the dataset by the information in each individual sample (intuitively, this means using samples that are more informative for the relevant task).
+我们能增加数据集中的总体信息，其中的每一个独立样本（直观上，这意味着用到的样本是对相关任务有更多的信息量）
 
 We can also increase the information in the dataset by adding more samples that offer new information about the true distribution[^6].
+我们也能增加数据的信息，通过加入更多的样本，共同关于真实分布的新信息。
 
 **To simplify, there are two ways to improve the quality of the dataset:**
+简单的说，有两个方法去提升数据集的质量：
 
 1. data quality
-2. data quantity
+   数据定性
+3. data quantity
+   数据定量
 
 This is not because more data is always good[^7], but because we want more information about the true distribution in the dataset so the model can learn a sufficient approximation of it.
+这不是因为更多的数据是一直很好的，而是因为我们想要更多关于真实分布的信息出现在数据集中，这样模型能学习到一个足够的近似结果。
 
 With this understanding of the data constraint and how to improve the quality of datasets, we can look at how progress in this dimension has impacted the history of deep learning.
+有了这个关于数据集约束和如何提升数据集质量的理解，我们能看到在这个维度上的进度如何能影响深度学习的历史进程。
 
 <br />
 
 [^6]: This is analogous to how adding more terms to a Taylor series yields a function closer to the original. Approximations improve with more information about the true function.
-[^7]: In fact, you can think of examples where more data makes no difference. For example adding the same image to a dataset (or two images similar to each other) doesn't improve the quality of the model created. It's because these new data points don't add much new information about the true distribution.
+      这是模拟了如何加入更多的项给Taylor级数，得到一个更接近原始的函数。近似提升是通过更多的关于真实函数的信息做到。
+[^7]: In fact, you can think of examples where more data makes no difference. For example adding the same image to a dataset (or two images similar to each other) doesn't improve the quality of the model created. It's because these new 
+      事实上，我们能想到样本中的大部分数据没有差异。例如，加入相同的图片到一个数据集汇总（或两张一样的图片）不能提升创建模型的质量。这是因为这些新的数据点不能加入更多的关于真实分布的新信息。
+data points don't add much new information about the true distribution.
 
 ### Breakthrough #1: Large Labeled Datasets
+### 突破 #1：大型的标记数据集
 
 Early machine learning relied on datasets collected by individual research teams. Despite the development of effective approaches to deep learning, datasets weren't large enough to prove their advantages.
+早期的机器学习依赖于数据集都是由独立的研究团队收集。尽管有深度学习方法的有效发展，但是数据集不够大，导致无法证明其优点。
 
-The introduction of datasets like [MNIST](https://en.wikipedia.org/wiki/MNIST_database) and [ImageNet](https://en.wikipedia.org/wiki/ImageNet) drastically increased the availability of high quality datasets large enough to effectively train deep learning models.
+The introduction of datasets like [MNIST](https://en.wikipedia.org/wiki/MNIST_database) and [ImageNet](https://en.wikipedia.org/wiki/ImageNet) drastically increased the availability of high quality datasets large enough to effectively 
+随着一些数据集的引入，如MNIST和ImagNet，显著的提升了高质量数据集的可用性，其足够大，可以用来训练深度学习模型。
+train deep learning models.
 
-Early [CNNs](/01-deep-neural-networks/02-cnn/03-cnn.ipynb) like [LeNet](/01-deep-neural-networks/02-cnn/02-le-net.pdf) and [AlexNet](/01-deep-neural-networks/03-alex-net/01-alex-net.pdf) used these datasets to show that deep neural networks could compete with the traditional machine learning approaches used at the time.
+Early [CNNs](/01-deep-neural-networks/02-cnn/03-cnn.ipynb) like [LeNet](/01-deep-neural-networks/02-cnn/02-le-net.pdf) and [AlexNet](/01-deep-neural-networks/03-alex-net/01-alex-net.pdf) used these datasets to show that deep neural 
+早期的CNN，类似LeNet和AlexNet用到了这些数据集证明了
+networks could compete with the traditional machine learning approaches used at the time.
+深度神经网络能与同期的传统的机器学习方法竞争。
 
-It's easy to take for granted the impact of these datasets now, as they have long been obselete - but they clearly had a huge impact on the field. Notably, AlexNet, which [completely changed the field of deep learning](/01-deep-neural-networks/03-alex-net/01-alex-net.pdf), could not have existed without the creation of the ImageNet dataset.
+It's easy to take for granted the impact of these datasets now, as they have long been obsolete - but they clearly had a huge impact on the field. Notably, AlexNet, which [completely changed the field of deep learning](/01-deep-neural-
+现在很容易确认这些数据集的影响力，因为这些都已经是过时的，但是这些都对领域有巨大的影响。特别是，AlexNet，其完全改变了深度学习的领域，而ImageNet数据集对其而言是不可或缺的。
+networks/03-alex-net/01-alex-net.pdf), could not have existed without the creation of the ImageNet dataset.
 
 **The introduction of large labeled datasets can be seen as the first breakthrough in pushing the data constraint toward larger datasets.**
+引入了大型的标记数据集能被看作第一个突破，推动了数据约束向着更大的数据集发展。
 
 Though useful, these datasets were inherently unscalable due to the manual labeling process they rely on. In order to push the data constraint to the next level with even larger datasets, a new approach to data was needed.
+尽管有用，这些数据集实际是无法扩展的，因为都依赖于人工标记。为了推动数据约束朝着下一个层级更大数据集发展，就需要一个新的数据方法。
 
 <br />
 
 ### Breakthrough #2: Unlocking the Internet
+突破2：解锁互联网
 
 The internet is the most obvious source of massive amounts of data that could plausibly be used for deep learning. However, it was initially unclear how to use this data to train a deep learning model.
+互联网显然是海量的数据集源，能合理用于深度学习。但是，一开始不清楚如何用这些数据去训练一个深度学习模型。
 
-Unlike labeled datasets, internet data is not created for a specific tasks, so it didn't appear to contain high quality data that could contribute to training a specific model. For this reason, internet data appeared to be unusable in deep learning for a long time[^8].
+Unlike labeled datasets, internet data is not created for a specific tasks, so it didn't appear to contain high quality data that could contribute to training a specific model. For this reason, internet data appeared to be unusable in 
+不同于已标记的数据，互联网数据不是用于特定的任务的，这样其就不能包含高质量的数据，无法用来训练一个特定的模型。因此，互联网数据在深度学习的发展中有很长一段时间是无用的。
+deep learning for a long time[^8].
 
-[BERT](/04-transformers/02-bert/03-bert.ipynb) completely changed this. BERT popularized the **transfer learning** paradigm now used by all large language models (including [GPTs](/04-transformers/04-gpt/03-gpt.ipynb)) - the model was _pre-trained_ on a large portion of the internet (high quantity, unpredictable quality), and then _fine-tuned_ on smaller datasets (low quantity, high quality).
+[BERT](/04-transformers/02-bert/03-bert.ipynb) completely changed this. BERT popularized the **transfer learning** paradigm now used by all large language models (including [GPTs](/04-transformers/04-gpt/03-gpt.ipynb)) - the model was 
+BERT完全改变了这一切。BERT主导了迁移学习的方法，现在被用到了所有的大型语言模型中（包括GPT）-
+_pre-trained_ on a large portion of the internet (high quantity, unpredictable quality), and then _fine-tuned_ on smaller datasets (low quantity, high quality).
+这个模型是预训练在一个大型的互联网数据集上（海量，无法预测的质量），并微调在更小的数据集上（很少数量，高质量）。
 
 **For the first time ever, BERT showed that we could actually make internet-scale datasets useful.**
+第一次，BERT证明了我们能让互联网上的数据集非常有用。
 
 The results also shocked the broader tech community - for example, [causing a Google executive to express](https://x.com/TechEmails/status/1756765277478621620) that an AI system would inevitably replace Google search in the near future.
+这个结果也振动了更大技术社区-例如，导致Goolge发布了一个声明，AI系统将不可避免的替代Google搜索，就在不远的将来。
 
 For those curious, the [LoRA](/04-transformers/05-lora/02-lora.ipynb) paper further developed on why the transfer learning paradigm developed by BERT and used by all modern LLMs may be so effective.
+为此，LoRA论文进一步研究发布了，为什么BERT提出的迁移学习方法并被所有的大语言模型使用，是如此的有效。
 
 <br />
 
 [^8]: There was not powerful enough compute or good enough architectures to process the scale of internet datasets effectively for a long time.
+      很长一段时间，没有足够强大的计算，或足够好的架构去有效的处理互联网规模的数据集。
 
 ### Breakthrough #3: Training Assistants
+突破3：训练辅助
 
 [BERT](/04-transformers/02-bert/03-bert.ipynb) and the [GPTs](/04-transformers/04-gpt/03-gpt.ipynb) were technically impressive but didn't immediately reach the mainstream until the release of ChatGPT.
+BERT和GPTs技术上很出色，但是没有立刻成为主流，知道ChatGPT的发布。
 
-[InstructGPT](/04-transformers/06-rlhf/05-rlhf.ipynb) was the breakthrough that enabled this. It used [RLHF](/04-transformers/06-rlhf/) techniques to fine-tune the base GPT-3 model using a human generated dataset of question-answer pairs deemed good responses for a helpful assistant.
+[InstructGPT](/04-transformers/06-rlhf/05-rlhf.ipynb) was the breakthrough that enabled this. It used [RLHF](/04-transformers/06-rlhf/) techniques to fine-tune the base GPT-3 model using a human generated dataset of question-answer 
+InstructGPT是能做到这些的突破点。其用到了一些技术去微调基础的GPT-3模型，用到了一个人工生成的数据集，包括了成对的问答，作为一个非常有用的助手去提供很好的反馈。
+pairs deemed good responses for a helpful assistant.
 
 By learning to behave effectively as an assistant, InstructGPT created the practical communication style that enabled ChatGPT to succeed.
+通过学习去有效成为一个助手，InstructGPT创建了实用的交流风格，使得ChatGPT成功。
 
 **The success of InstructGPT is an indication of how high-leverage data quality can be when fine-tuning language-models.**
+InstructGPT的成功证明了，在微调语言模型如何去高度的利用数据集质量。
 
 Though many fine-tuned models existed before the instruct series, InstructGPT was far preferred to almost everything else at the time due to the high quality data it was trained on.
+尽管大量微调后的模型在指令系列之前就出现了，InstructGPT几乎是那时其中最好的，这是因为其训练在高质量的数据上。
 
 <br />
 
 ### Beyond Internet Data
+超越互联网数据
 
 How much more can we improve the quality of the datasets deep learning models are trained on to improve the capacity for models to become intelligent?
+我们究竟要提升到怎样的数据集质量，使得深度学习模型在其上训练，能提升模型的能力，让其变得智能？
 
 The amount of data generated on the internet is increasing exponentially, which should continue to provide a source of increasingly large datasets to train on[^9].
+互联网上生成数据的数量是指数增长的，这样就能持续提供一个不断增长的大型数据集可以用作训练。
 
 However, there's another question about the quality of the data on internet-scale datasets. We want our systems to model reality - whereas the internet can be understood as a (highly) lossy compression of the true laws of reality[^10].
+但是，有另一个问题关于互联网规模的数据集的质量的。因为我们想要的系统是去建模真实世界-由于互联网能被理解成为一个（高度）有损压缩的真实世界法则。
 
-Because of this, the abundance of humanoid robots may present a new means of data collection for deep learning models that gives direct access to information about reality - which makes [OpenAI & Microsoft's investment and collaboration with Figure](https://www.reuters.com/technology/robotics-startup-figure-raises-675-mln-microsoft-nvidia-other-big-techs-2024-02-29/) particularly interesting.
+Because of this, the abundance of humanoid robots may present a new means of data collection for deep learning models that gives direct access to information about reality - which makes [OpenAI & Microsoft's investment and collaboration 
+因此，丰富的类人机器人可能展示了一个新的意义，即数据收集用于深度学习模型，能直接用到关于真实世界的信息-这变得特别有趣。
 
-Regardless, current scaling laws have shown that current models are far from reaching the capacity of the information available in internet-scale datasets, meaning we may be far away from the point where data becomes the constraint again.
+with Figure](https://www.reuters.com/technology/robotics-startup-figure-raises-675-mln-microsoft-nvidia-other-big-techs-2024-02-29/) particularly interesting.
+
+Regardless, current scaling laws have shown that current models are far from reaching the capacity of the information available in internet-scale datasets, meaning we may be far away from the point where data becomes the constraint 
+毫无疑问，当前的尺度法则已经证明了，当前的模型是远远没到容纳互联网数据集的可用信息的规模，也意味着我们还远没到数据成为约束的点。
+again.
 
 <br />
 
-[^9]: This may not actually be sufficient to keep increasing the quality of models, as a recent [analysis of zero-shot learning](https://arxiv.org/abs/2404.04125) shows that large language models ability to perform tasks increases logartihmically with the amount of relevant data in the dataset.
-[^10]: The internet is a lossy compression of the entirety of human knowledge, with lot's of noise (complex and contrasting intentions behind different posts). Additionally, human knowledge itself is a very lossy (and partially inaccurate) compression of the laws of reality.
+[^9]: This may not actually be sufficient to keep increasing the quality of models, as a recent [analysis of zero-shot learning](https://arxiv.org/abs/2404.04125) shows that large language models ability to perform tasks increases 
+      这可能实际不足以保证模型的质量增长，如最近的analysis of zero-shot所论述的，大语言模型有能力实现执行任务的对数增长，相较于数据集中的相关数据量而言。
+logartihmically with the amount of relevant data in the dataset.
+[^10]: The internet is a lossy compression of the entirety of human knowledge, with lot's of noise (complex and contrasting intentions behind different posts). Additionally, human knowledge itself is a very lossy (and partially 
+        互联网是一个有损压缩的人类知识的全集，有大量的噪声（复杂性，和不同发布者的带来的不同意图）。此外，人类知识本身是一个非常有损失（同时部分不准确）压缩的真实世界法则。
+inaccurate) compression of the laws of reality.
 
 ### Modeling Data
+建模数据
 
 Now that we've understood the data constraint, we can explore what constrains how effectively the neural network can model the data.
+现在，我们已经理解了数据约束，我们就能探索关于神经网络如何能有效建模数据的约束上。
 
 This determines how close to modeling the empirical distribution the model will get, which corresponds with its intelligence.
+这决定了建模经验分布的模型将有多接近真实分布，这关系到其智能性。
 
 The first constraint that determines the capacity for the model to learn the empirical distribution is the number of parameters in the neural network.
+第一个约束关于模型学习经验分布的容量，就是神经网络中的参数数量。
 
 <br />
 
