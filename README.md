@@ -13,14 +13,14 @@ The rest of this page is my breakdown of everything we can learn from this histo
 这一页的剩余部分是基于我对这段历史的一个划分，以及对于深度学习未来的一些想法，这是受到[_The Lessons of History_]的启发。
 
 > [!IMPORTANT]
->
+> 重点
 > **This project is designed so everyone can get most of the value by just reading my overview on the rest of this page.**
->这个项目是设计给每一个人去发现最大价值，但这需要去阅读本页剩余部分的观点
+> 这个项目是设计给每一个人去发现最大价值，但这需要去阅读本页剩余部分的观点
 > Then, people curious to learn about the technical details of each innovation can explore the rest of the repository via the links in the [resources](#resources) section.
 > 然后，有兴趣的人想要学习每一个创新的技术细节，可以看一下仓库的剩余部分，可以通过 [resources](#resources)直达。
 
 > [!NOTE]
->
+> 注意
 > Thanks to [Pavan Jayasinha](https://x.com/pavanjayasinha) and [Anand Majmudar](https://x.com/Almondgodd) for their constant feedback while I made this 😄
 > 感谢 [Pavan Jayasinha](https://x.com/pavanjayasinha) and [Anand Majmudar](https://x.com/Almondgodd) 的日常反馈对我的帮助。
 
@@ -66,7 +66,7 @@ The rest of this page is my breakdown of everything we can learn from this histo
 <br />
 
 # Overview
-
+  概览
 The most interesting part of my deep-dive came from noticing a clear trend across all the key advancements, which has completely reframed how I understand deep learning:
 我这里所深入的最有意思的部分是来自对所有关键进展和趋势的清楚论述，这完全重构了我的深度学习的理解。
 
