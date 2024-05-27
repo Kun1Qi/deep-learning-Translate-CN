@@ -611,19 +611,23 @@ the optimizer to adjust step-sizes based on past information, often leading to m
 遗忘约束
 
 The advancements mentioned above (and related developments) are all used in most models to date. For example, the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb) 
->之前提到的优势（和关联的进展）都是被用在大部分今天的模型中。
+之前提到的优势（和关联的进展）都是被用在大部分今天的模型中。
 
 architecture uses [Dropout](/02-optimization-and-regularization/04-dropout/), [Layer Normalization](/02-optimization-and-regularization/06-layer-norm/02-layer-norm.ipynb), and[Residuals]
->例如，Transformer架构用了Dropout，Layer Normalization，和Residuals在其架构中，
+例如，Transformer架构用了Dropout，Layer Normalization，和Residuals在其架构中，
 (/02-optimization-and-regularization/03-residuals/02-residuals.ipynb) throughout it's architecture, and was trained using the [Adam](/02-optimization-and-regularization/08-adam/)
->并且在训练中用到了Adam优化器。
+并且在训练中用到了Adam优化器。
 optimizer.
 
 Because of how effective they've been completely removing prior problems, optimization & regularization appear to be largely solved now.
+因为之前的问题已经被完成很有效的解决，优化和正则化现在就被很大程度上解决了。
 
 This is especially augmented by the fact that we're far from reaching the peak of the scaling laws on current internet-scale datasets, so overfitting is not a concern.
+这种情况特别是被现实所强化，因为当前用到的缩放法则还远远没到抵达互联网规模的数据集的峰值，于是过拟合的问题不被关注。
 
-**Despite this, it's important to remember that optimization & regularization are still real constraints on the size of neural networks**, although they no longer effect models in their current state.
+**Despite this, it's important to remember that optimization & regularization are still real constraints on the size of neural networks**, although they no longer effect models in their 
+尽管如此，很重要是要记住，优化和正则化仍然是神经网络上实实在在的约束，尽管这些在当前状态已经不再影响模型。
+current state.
 
 <br />
 
