@@ -368,133 +368,242 @@ The first constraint that determines the capacity for the model to learn the emp
 <br />
 
 ## 1.2. Parameters
+        参数
 
 ![constraint-2-parameters](./images/readme/constraint-2-parameters.png)
 
 The model needs to have enough _representational capacity_ to be able to learn the empirical distribution of the dataset.
+模型需要有足够的表征能力去学习数据集中的经验分布。
 
 This means the neural network needs to have parameters to provide enough degrees of freedom to accurately model the distribution. In practice, it's challenging to predict the minimal number of parameters needed to fully model a dataset.
+这意味着神经网络需要有参数可以提供足够的自由度去准确的建模分布。实际上，预测全面建模一个数据集所需的最小参数量是有挑战性的事情。
 
-However, when the amount of information in the dataset is far beyond what the network is capable of modeling, the easiest way to improve the network is to scale up the number of parameters - which can mean increasing the depth of the network and adding more parameters per layer.
+
+However, when the amount of information in the dataset is far beyond what the network is capable of modeling, the easiest way to improve the network is to scale up the number of parameters - which can mean increasing the depth of the 
+但是，当数据集中的信息量远远超过了建模能力，最简单的方法是去提升网络，通过增加参数数量的方式-这能均匀的提升网络的深度，
+network and adding more parameters per layer.
+并在每一层加入更多的参数。
 
 With modern internet-scale datasets, the complexity is massive, so the approach of adding more parameters shows no signs of slowing down in terms of its efficacy at improving the intelligence of models.
+用了现代互联网规模的数据集，就有了极大的复杂性，这样加入更多参数的方法，还没有出现在提升模型智能性上有放缓的迹象。
 
 > [!NOTE]
->
+>注意
+> 
 > **Constraint #2: The representational capacity of a model is bounded by the number of parameters it contains.**
+> 约束 #2：一个模型的表征能力是受到其包含的参数量的制约。
 
 In practice, we'll see that increasing the number of parameters in a neural network is actually a function of the other constraints.
+实际上，我们将看到，增加神经网络中的参数量是与其它约束条件有函数关系。
 
 Let's look at the times in the past where this constraint has been particularly relevant.
+让我们看看过去发生的特别相关的一些约束。
 
 <br />
 
 ### Breakthrough #1: Increasing Depth
+### 突破 #1：增加深度
 
 The earliest neural networks consisted of just a single input and output layer, heavily limiting their representational capacity.
+最早的神经网络只有一个单一的输入和输出层，严重制约了其表征能力。
 
-The original [backpropagation paper](/01-deep-neural-networks/01-dnn/01-dnn.pdf) discussed the addition of a hidden layer, adding more parameters to the network which significantly increased it's ability to represent more complex problems (like shift-registers, the XOR gate, etc. - all very simple examples, but impressive at the time).
+The original [backpropagation paper](/01-deep-neural-networks/01-dnn/01-dnn.pdf) discussed the addition of a hidden layer, adding more parameters to the network which significantly increased it's ability to represent more complex 
+最初的反向传播论文讨论了加入一个隐藏层，加入更多的参数到网络中，能显著的提升其表征更复杂性的能力。
 
-[AlexNet](/01-deep-neural-networks/03-alex-net/02-alex-net.ipynb) is one of the clearest examples of increasing parameters leading to better models[^11] - the AlexNet architecture used 5 convolutional layers, far more than the previous largest CNN at the time, which enabled it to crush the previous best score in the ImageNet competition.
+problems (like shift-registers, the XOR gate, etc. - all very simple examples, but impressive at the time).
+一些问题（类似移动-寄存器，XOR门控，等。所有这些都是非常简单的例子，但是在那时让人印象深刻）。
+
+
+[AlexNet](/01-deep-neural-networks/03-alex-net/02-alex-net.ipynb) is one of the clearest examples of increasing parameters leading to better models[^11] - the AlexNet architecture used 5 convolutional layers, far more than the previous 
+AlexNet是其中最清楚的例子，其增加了参数得到了更好的模型-AlexNet架构中用到了5个卷积层，远远超过了前一个
+
+largest CNN at the time, which enabled it to crush the previous best score in the ImageNet competition.
+当时最大的CNN，这样使得其能压倒之前最好的成绩在ImageNet竞赛上。
 
 However, early on, size appeared to be one of many factors constraining the improvement of models, rather than the most important constraint.
+但是，早前，大小是约束模型提升的一个主要因素，超过了其它的因素。
+
 
 <br />
 
-[^11]: Although, AlexNet was the result of a large number of innovations that combined to make it so effective - the increase in network depth was complemented with a use of effective optimization & regularization methods and the use of GPUs for training which enabled this increase in size.
+[^11]: Although, AlexNet was the result of a large number of innovations that combined to make it so effective - the increase in network depth was complemented with a use of effective optimization & regularization methods and the use of 
+尽管AlexNet是大量创新的结果，这些创新的组合使得其如此有效-在网络深度的提升，组合用到了优化和正则化的方法，并用GPU训练，
+GPUs for training which enabled this increase in size.
+这样使得大小得到了提升。
 
 ### Breakthrough #2: Scaling Laws
+### 突破 #2：缩放法则
 
 The [GPT](/04-transformers/04-gpt/) series made it clear that for internet datasets, scaling parameters appears to be sufficient to significantly increase model quality.
+GPT系列证明，对于互联网数据集，缩放参数的做法是足以显著的提升模型的质量。
 
 The scaling laws show no sign of letting up, which has motivated the current continued attempts at training larger and larger models.
+缩放法则还没有显示出停止的迹象，这促使了当前继续尝试训练越来越大的模型。
+
 
 <p align="center">
   <img src="/images/readme/scaling-laws.png" alt="Scaling Laws" width="50%" />
 </p>
 <p align="center">
   <i>Scaling laws for model performance as a function of parameters</i>
+  缩放法则对于模型性能而言，类似一个参数化的函数。
 </p>
 
-**Importantly, the reason for this trend is not that increasing the number of parameters in a model always increases it's intelligence.** Instead, it's due to the fact that current models still don't have enough representational capacity to capture all the information in internet-scale datasets.
+**Importantly, the reason for this trend is not that increasing the number of parameters in a model always increases it's intelligence.** Instead, it's due to the fact that current models still don't have enough representational 
+重要的是，出现这个趋势的原因并不是增加模型的参数量能一直提升其智能。而是由于事实上当前的
+
+capacity to capture all the information in internet-scale datasets.
+模型容量仍然不足以去表征互联网规模数据集的全部信息。
+
 
 As mentioned previosly, increasing the number of parameters in a neural network is actually governed by the other constraints.
+如之前所提到的，增加神经网络的参数量实际上是受到其它条件的制约。
 
 <br />
 
 ## 1.3. Optimization & Regularization
+## 1.3. 优化和正则化
 
 ![constraint-3-optimization-and-regularization](./images/readme/constraint-3-optimization-and-regularization.png)
+约束-3-优化和正则化
 
 In reality, you can't keep scaling up the number of parameters in a model and expect quality to keep increasing.Scaling up a model (via increasing the depth or the number of parameters per layer) introduces two new classes of problems.
+现实中，你不可能持续放大模型的参数量，并期望其质量一直上升。放大一个模型（通过增加深度或每一层的参数量）引入了两种新类型的问题。
 
 First, increasing the depth of a network can make it take far longer to converge to an optimal solution, or in the worst cases, can prevent the network from converging.
+首先，增加一个网络的深度，将使得更难的收敛到一个最优解，或最在最坏的情况，可能导致网络不能收敛。
 
 **The process of ensuring models can converge effectively, even as they grow in depth, is known as optimization.**
+确保模型能有效收敛的过程，甚至在增加深度条件下，被称为优化。
 
-Additionally, when you scale up the number of parameters in a model so it's representational capacity exceeds the complexity of the empirical distribution, the model can start fitting trivial _noise_ in the distribution. This effect is known as _overfitting_.
+
+Additionally, when you scale up the number of parameters in a model so it's representational capacity exceeds the complexity of the empirical distribution, the model can start fitting trivial _noise_ in the distribution. This effect is 
+此外，当你放大模型的参数量，这样其表征能力超过了经验分布的复杂性，这个模型就开始拟合分布中的很小的噪声，
+
+known as _overfitting_.
+这个现象被称为过拟合。
 
 **The process of regularization is used to ensure models learn useful _generalizations_ of the dataset and don't overfit to noise.**
+正则化的过程被用来确保模型学习数据集中有用的泛化性，并不出现过拟合噪声的情况。
 
 In practice, the actual depth of a network is constrained by the efficacy of the optimization & regularization strategies used.
+实际上，一个网路的实际深度是受到约束的，即受所用到的优化和正则化策略的效率约束。
 
 > [!NOTE]
->
+> 注意
+> 
 > **Constraint #3: The efficacy of optimization & regularization approaches constrains the number of parameters a network can handle while still being able to converge and generalize.**
+> 约束3：优化和正则化方法的效率约束一个网络的参数量能被处理，并仍然能保证收敛和泛化。
 
 <br />
 
 ### Breakthrough #1: Taming Gradients
+### 突破 #1：控制梯度
 
-While training deeper neural networks with [backpropagation](/01-deep-neural-networks/01-dnn/02-dnn.ipynb), gradients start to get magnified or disappear, due to the compounding effects of multiplication by sequences of large or small weights[^12].
+While training deeper neural networks with [backpropagation](/01-deep-neural-networks/01-dnn/02-dnn.ipynb), gradients start to get magnified or disappear, due to the compounding effects of multiplication by sequences of large or small 
+尽管训练更深的神经网络实用反向传播，这些梯度开始放大或消失，这是由于混合了乘以一些列的很大或很小的权重的效果。
+
+weights[^12].
 
 **This is known as the vanishing and exploding gradients problem.**
+这被称为梯度消失或爆炸的问题。
 
 It's easy to forget how prohibitive this problem was - it completely prevented the effective training of networks beyond a few layers in depth, putting a significant constraint on the size of networks.
+很容易忘记这个问题是如此的难以处理-这个问题导致网络无法有效训练，超过了网络深度问题点点，是关于网络大小的一个明显的制约。
 
-The introduction of [residuals](/02-optimization-and-regularization/03-residuals/02-residuals.ipynb) via the [ResNet](/02-optimization-and-regularization/03-residuals/01-residuals.pdf) architecture completely solved this problem by creating _residual pathways_ for gradients to flow effectively through networks of arbitrary depth.
+The introduction of [residuals](/02-optimization-and-regularization/03-residuals/02-residuals.ipynb) via the [ResNet](/02-optimization-and-regularization/03-residuals/01-residuals.pdf) architecture completely solved this problem by 
+出现了残差网络，通过ResNet架构，完全的解决这个问题，
+creating _residual pathways_ for gradients to flow effectively through networks of arbitrary depth.
+通过构建参与的小路，可以使得梯度流高效的用在任意深度的网络中。
+
 
 This unlock removed a significant constraint on network depth, enabling much larger networks to be trained (which removed a cap on parameters that existed for a long time before this).
+这个解锁移除了在网络深度上的约束，使得明显更大的网络能被训练（这移除了在参数上的障碍，这个问题存在很长时间）
 
 <br />
 
-[^12]: Understanding this section relies on a basic understanding of the fundamentals of the backpropagation algorith. [3blue1brown's neural network series](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) is an intuitive and interesting introduction for anyone who wants to learn.
+[^12]: Understanding this section relies on a basic understanding of the fundamentals of the backpropagation algorith. [3blue1brown's neural network series](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) is an 
+       理解这一部分的内容，依赖于一个关于反向传播算法的基础性的基本理解。3bluebrown的神经网络系列课程是一个直观和有趣的介绍，如果你想了解细节的话。
+intuitive and interesting introduction for anyone who wants to learn.
 
 ### Breakthrough #2: Network of Networks
+###突破 #2：网络中的网络
 
-[Dropout](/02-optimization-and-regularization/04-dropout/) introduced a critical regularization strategy that has been used in most networks after it's creation, notably contributing to the success of [AlexNet](/01-deep-neural-networks/03-alex-net/02-alex-net.ipynb) which initially popularized it.
+[Dropout](/02-optimization-and-regularization/04-dropout/) introduced a critical regularization strategy that has been used in most networks after it's creation, notably contributing to the success of [AlexNet](/01-deep-neural-
+提出操作引入了一个关键的正则化的策略，在其被发明之后被用到了大部分的网络中，使得AlexNnet取得了成功，
+networks/03-alex-net/02-alex-net.ipynb) which initially popularized it.
+因为其在一开始用到。
 
-Conceptually, the ideal way to prevent a model from overfitting to a particular problem would be to train a variety of neural networks on the same problem and then take the average of their predictions. This process would cancel out the noise fitted by each network, leaving only the true representations.
+Conceptually, the ideal way to prevent a model from overfitting to a particular problem would be to train a variety of neural networks on the same problem and then take the average of their predictions. This process would cancel out the 
+概念上，避免一个模型对一个特定问题出现过拟合，就是去训练一个多个神经网络在同一个问题上，然后平均这些网络的预测结果。这个过程将消除
+
+noise fitted by each network, leaving only the true representations.
+在每一个网络上的噪声拟合，仅仅得到正确的表征。
 
 However, this naive approach was prohibitively expensive - training multiple large neural networks for a single problem costs more compute.
+但是，这个原始的方法的开销难以承受-训练多个大型的神经网络用于一个单一的问题会产生大量的计算开销。
 
-Dropout enabled a computationally effective equivalent approach involving randomly blocking out the effects of a subset of neurons in each training run[^13], effectively training an exponential number of sub-networks within a neural network and averaging their predictions together.
+
+Dropout enabled a computationally effective equivalent approach involving randomly blocking out the effects of a subset of neurons in each training run[^13], effectively training an exponential number of sub-networks within a neural 
+剔除操作能做到计算效果的方法等价，通过在每一次训练运行中，随机的去除掉一个神经元子集的影响方式，有效的在神经网络中训练一个指数数量的子网的方式，
+
+network and averaging their predictions together.
+并将这些子网的预测结果共同平均。
 
 <br />
 
-[^13]: This effect forces individual neurons to learn general representations useful in collaboration with a variety of other neurons, rather than co-adapting with neighboring neurons, which allows large groups of neurons to fit to noise.
+[^13]: This effect forces individual neurons to learn general representations useful in collaboration with a variety of other neurons, rather than co-adapting with neighboring neurons, which allows large groups of neurons to fit to 
+这个效果是去强制独立的神经元去学习通用表征，能被用于和其它不同的神经元进行协作，而不是用来适应性调整相邻的一些神经元，后者将让很多分组的神经元去拟合噪声。
+noise.
 
 ### Breakthrough #3: Taming Activations
+### 突破 #3：控制激活
+
 
 Another problem when training deep networks is that later layers suffer from improving while the activations of earlier layers change, potentially rendering their early stages of training useless.
+另一个训练神经网络的问题是，激活前面的网络变化，当导致后面的网络层无法提升，潜在的说明在训练的早期环节渲染是没什么用的。
+
 
 **This problem is known as internal covariate shift**, and also prohibitted the training of deeper networks.
+这个问题被称为内部协变量偏移，也导致无法训练更深的网络。
 
-The introduction of [Batch Normalization](/02-optimization-and-regularization/05-batch-norm/) and [Layer Normalization](/02-optimization-and-regularization/06-layer-norm/) solved this by forcing neuron activations into predictable distributions, preventing the covariate shift problem.
 
-This breakthrough, combined with residuals, provided the basis for building much deeper networks. Layer Normalization in particular enabled the training of deeper reccurent models like [RNNs](/03-sequence-modeling/01-rnn/02-rnn.ipynb) and [LSTMs](/03-sequence-modeling/02-lstm/02-lstm.ipynb)'s that led to the innovations eventually resulting in the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb).
+The introduction of [Batch Normalization](/02-optimization-and-regularization/05-batch-norm/) and [Layer Normalization](/02-optimization-and-regularization/06-layer-norm/) solved this by forcing neuron activations into predictable 
+通过引入批次归一化和网络层归一化方法，通过强制神经元激活用在可预测的分布
+
+distributions, preventing the covariate shift problem..
+中解决了这个协变量偏移的问题。
+
+
+This breakthrough, combined with residuals, provided the basis for building much deeper networks. Layer Normalization in particular enabled the training of deeper reccurent models like [RNNs](/03-sequence-modeling/01-rnn/02-rnn.ipynb) 
+这个突破，并组合了残差方法，提供了构建更深网络的基础。网络层归一化特别是能用在更深的循环模型，
+and [LSTMs](/03-sequence-modeling/02-lstm/02-lstm.ipynb)'s that led to the innovations eventually resulting in the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb).
+如RNN和LSTM，这样最终发明得到Transformer。
 
 <br />
 
 ### Breakthrough #4: Momentum
+### 突破 #4：动量
+
 
 The initial optimization algorithm, _stochastic gradient-descent_, involves taking a pre-determined step to update the parameters at each time-step.
+初始化优化算法，随机梯度下降，涉及使用一个预先确定的步骤去更新每一个时间步骤上的参数。
+
 
 In practice, this can be highly inefficient and hurt convergence[^14].
+实际上，这样做是非常低效并不利于收敛。
 
-The [Adam](/02-optimization-and-regularization/08-adam/02-adam.ipynb) optimizer introduced an efficient algorith to keep track of **adaptive moments** tracking the history of gradients throughout the optimization process. This allowed the optimizer to adjust step-sizes based on past information, often leading to much faster convergence.
+
+The [Adam](/02-optimization-and-regularization/08-adam/02-adam.ipynb) optimizer introduced an efficient algorith to keep track of **adaptive moments** tracking the history of gradients throughout the optimization process. This allowed 
+Adam 优化器包含了一个高效的算法，能确保追踪“自适应动量”，去追踪梯度的历史在整个优化的过程中。
+
+the optimizer to adjust step-sizes based on past information, often leading to much faster convergence.
+这使得优化器调整但不的大小是基于过去的信息，通常能做到明显更快的收敛。
+
 
 [^14]: Specifically in parameter spaces with large variance in the gradients, a certain step-size may cause over-adjustments in certain parts of the landscape, and result in painfully slow changes in other cases.
+特别是在参数空间中有很大的方差出现在梯度中，一个确定的单步大小可能导致过度调整出现在
+
 
 <br />
 
