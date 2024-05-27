@@ -3,7 +3,7 @@
 
 A deep-dive on the entire history of deep learning, highlighting the series of innovations that got us from simple feed-forward networks to GPT-4o.
 
-这里深入了整个深度学习的历史，重点提到了一些的创新，能使得我们从简单的前向网络直到今天的GPT-4o。
+这里深入了整个深度学习的历史，重点提到了一系列的创新，其使得我们从简单的前向网络直到今天的GPT-4o。
 
 For each key milestone, I've included the critical papers in this repository, along with my notes, my explanation of important intuitions & math, and a toy implementation in pytorch when relevant.
 
