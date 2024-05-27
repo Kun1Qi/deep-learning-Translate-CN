@@ -595,21 +595,29 @@ In practice, this can be highly inefficient and hurt convergence[^14].
 
 
 The [Adam](/02-optimization-and-regularization/08-adam/02-adam.ipynb) optimizer introduced an efficient algorith to keep track of **adaptive moments** tracking the history of gradients throughout the optimization process. This allowed 
-Adam 优化器包含了一个高效的算法，能确保追踪“自适应动量”，去追踪梯度的历史在整个优化的过程中。
+Adam 优化器包含了一个高效的算法，能确保追踪“自适应动量”，去追踪梯度在整个优化的过程中的历史。
 
 the optimizer to adjust step-sizes based on past information, often leading to much faster convergence.
-这使得优化器调整但不的大小是基于过去的信息，通常能做到明显更快的收敛。
+这使得优化器调整单步的大小是基于过去的信息，通常能做到明显更快的收敛。
 
 
 [^14]: Specifically in parameter spaces with large variance in the gradients, a certain step-size may cause over-adjustments in certain parts of the landscape, and result in painfully slow changes in other cases.
-特别是在参数空间中有很大的方差出现在梯度中，一个确定的单步大小可能导致过度调整出现在
+特别是在参数空间中有很大的方差出现在梯度中，一个确定的单步大小可能导致过度调整出现在损失风景的确定部分，并导致痛苦缓慢的变化出现在其它的情况。
 
 
 <br />
 
 ### The Forgotten Constraint
+遗忘约束
 
-The advancements mentioned above (and related developments) are all used in most models to date. For example, the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb) architecture uses [Dropout](/02-optimization-and-regularization/04-dropout/), [Layer Normalization](/02-optimization-and-regularization/06-layer-norm/02-layer-norm.ipynb), and[Residuals](/02-optimization-and-regularization/03-residuals/02-residuals.ipynb) throughout it's architecture, and was trained using the [Adam](/02-optimization-and-regularization/08-adam/) optimizer.
+The advancements mentioned above (and related developments) are all used in most models to date. For example, the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb) 
+>之前提到的优势（和关联的进展）都是被用在大部分今天的模型中。
+
+architecture uses [Dropout](/02-optimization-and-regularization/04-dropout/), [Layer Normalization](/02-optimization-and-regularization/06-layer-norm/02-layer-norm.ipynb), and[Residuals]
+>例如，Transformer架构用了Dropout，Layer Normalization，和Residuals在其架构中，
+(/02-optimization-and-regularization/03-residuals/02-residuals.ipynb) throughout it's architecture, and was trained using the [Adam](/02-optimization-and-regularization/08-adam/)
+>并且在训练中用到了Adam优化器。
+optimizer.
 
 Because of how effective they've been completely removing prior problems, optimization & regularization appear to be largely solved now.
 
