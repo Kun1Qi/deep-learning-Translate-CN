@@ -747,12 +747,12 @@ between concepts.
 The now famous [_Attention Is All You Need_](/04-transformers/01-transformer/01-transformer.pdf) paper removed all the LSTM components and demonstrated that the inductive bias of 
 现在有名的注意力是所有所需要的这篇论文移除了全部的LSTM部分，
 attention alone is effective for sequence-modeling tasks, introducing the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb) architecture which has permanently changed 
-并验证了归纳偏置的注意力单独是可以有效的用于序列建模任务，引入了Transformer架构
+并验证了归纳偏置的注意力单独是可以有效的用于序列建模任务，引入了Transformer架构深远的改变了深度学习领域。
 deep learning.
-深远的改变了深度学习领域。
+
 
 **The transformer is particularly effective not just because of the power of the attention mechanism, but because of the high parallelization it achieved by removing recurrence.**
-Transformer是特别有效，不仅仅因为其注意力机制的能力，也因为其高度的并发性，这是通过提出了循环实现的。
+Transformer是特别有效，不仅仅因为其注意力机制的能力，也因为其高度的并发性，这是通过剔除了循环实现的。
 
 
 <br />
