@@ -611,13 +611,18 @@ the optimizer to adjust step-sizes based on past information, often leading to m
 遗忘约束
 
 The advancements mentioned above (and related developments) are all used in most models to date. For example, the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb) 
-之前提到的优势（和关联的进展）都是被用在大部分今天的模型中。
+之前提到的优势（和相关的进展）都是被用在大部分今天的模型中。
 
 architecture uses [Dropout](/02-optimization-and-regularization/04-dropout/), [Layer Normalization](/02-optimization-and-regularization/06-layer-norm/02-layer-norm.ipynb), and[Residuals]
 例如，Transformer架构用了Dropout，Layer Normalization，和Residuals在其架构中，
+
 (/02-optimization-and-regularization/03-residuals/02-residuals.ipynb) throughout it's architecture, and was trained using the [Adam](/02-optimization-and-regularization/08-adam/)
-并且在训练中用到了Adam优化器。
+并且在训练中用到了Adam
+
 optimizer.
+优化器。
+
+
 
 Because of how effective they've been completely removing prior problems, optimization & regularization appear to be largely solved now.
 因为之前的问题已经被完成很有效的解决，优化和正则化现在就被很大程度上解决了。
@@ -632,71 +637,128 @@ current state.
 <br />
 
 ## 1.4. Architecture
+## 1.4. 架构
 
 ![constraint-4-architecture](./images/readme/constraint-4-architecture.png)
+约束-4-架构
 
-We covered how increasing the number of parameters in a neural network increases its _representational capacity_. This can be understood as the networks ability to store _useful representations_ that effectively model the empirical distribution.
+We covered how increasing the number of parameters in a neural network increases its _representational capacity_. This can be understood as the networks ability to store _useful 
+我们论述了如何增加神经网络中的参数量来增加其表征容量。这个方法能被理解为增强网络保存有用表征的能力，
+
+representations_ that effectively model the empirical distribution.
+于是可以建模经验分布。
 
 By default, deep neural networks are forced to learn the most optimal ways to store representations for different problems.
+默认情况，深度神经网络是被强制去学习最优路径去保存表征，用于不同的问题。
 
-However, when we already know an effective method for the model to store useful representations relevant to a particular problem, it can be helpful to build the ability to store representations in this useful form directly into the model.
+However, when we already know an effective method for the model to store useful representations relevant to a particular problem, it can be helpful to build the ability to store 
+但是，当我们已经知道一个有效的方法用于模型去保存有用的表征去关联到一个特定的问题，这样有助于去构建保存表征到这个有用形式的能力，直接给模型。
+representations in this useful form directly into the model.
 
 **Building specific structures into the neural network design to make it easier for the model to store useful representations is known as adding inductive bias.**
+构建特定结构到神经网络的设计中，使得能更容易的让模型去保存有用的表征，这被称为加入归纳偏置。
 
 Desiging good neural network architectures into our models is about increasing the density of _useful representations_ in the model, meaning more efficient usage of parameters.
+设计好的神经网络架构给我们的模型，就是关于增加模型中有用表征的密度，意味着更高效的使用参数。
 
 In this way, improved architectures can achieve similar effects to scaling up parameters.
+于是，提升后的架构能实现与增加参数方法类似的效果。
+
 
 In practice, architectural advancements have made previously intractable problems (like image synthesis) possible for neural networks.
+实际上，架构提升已经使得前一个难以处理的问题（类似图片合成）在神经网络中可行。
 
 > [!NOTE]
 >
 > **Constraint #4: The quality of the network architecture constrains the representational capacity of a model.**
+>约束 #4：网络架构的质量约束了模型的表征能力。
 
 Technically, a deep neural network with non-linearities is capable of modeling any distribution, given a sufficient number of parameters[^15].
+技术上，一个深度神经网络其非线性的特性是能去建模任意的分布，当前要基于给定的足够参数数量。
 
-But in practicality, there are distributions with so much complexity that simple deep neural networks can't effectively model them[^16]. For these distributions, we turn to architectural advancements to make progress.
+
+But in practicality, there are distributions with so much complexity that simple deep neural networks can't effectively model them[^16]. For these distributions, we turn to architectural 
+但是在某些特殊情况，有一些分布包含了非常大的复杂性，导致简单的深度神经网络无法有效的建模。对于这些分布，我们就去做架构提升来解决这个问题。
+advancements to make progress.
 
 <br />
 
 [^15]: This idea is explored in the original [backpropagation paper](/01-deep-neural-networks/01-dnn/01-dnn.pdf).
+这个想法最开始在反向传播的论文中提到。
+
 [^16]: For example, image classification, where individual pixel values are noisy and subject to a variety of transformations.
+例如，图片分类，其中的独立像素值是有噪声的，并且服从一个不同的变换形式。
 
 ### Breakthrough #1: Learning Features
+### 突破 #1：学习特征
 
-The [Convolutional Neural Network](/01-deep-neural-networks/02-cnn/03-cnn.ipynb) was the first effective architecture that introduced a significant inductive bias into neural networks. The idea behind the CNN is directly inspired by the hierarchical processing of inputs from the brain's vision system.
+The [Convolutional Neural Network](/01-deep-neural-networks/02-cnn/03-cnn.ipynb) was the first effective architecture that introduced a significant inductive bias into neural networks. 
+这个卷积神经网络是第一个有效的架构，其引入了一个显著的归纳偏置到神经网络中。
+
+The idea behind the CNN is directly inspired by the hierarchical processing of inputs from the brain's vision system.
+CNN背后的思想是直接受到层次结构输入过程的启发，这来自大脑视觉系统。
 
 CNNs use _feature maps_ that detect high-level features across images to implement the translational invariance that's critical to image recognition tasks.
+CNN用了特征图，其探测图片中的高层级的特征，去实现平移不变性，这是图片识别任务的关键。
 
 This provided a deep learning analogue to the manual feature engineering efforts often used before deep learning was proven.
+这样得到的神经网络类似于手工特征工程，这通常被用在深度学习流行之前的工作中。
 
-CNNs were critical for the initial adoption of deep learning - neural networks like [LeNet](/01-deep-neural-networks/02-cnn/02-le-net.pdf) and [AlexNet](/01-deep-neural-networks/03-alex-net/01-alex-net.pdf) used the architecture to beat the state-of-the-art in image classification competitions. Additionally CNNs are still relevant in modern models with the [U-Net](/01-deep-neural-networks/04-u-net/02-u-net.ipynb) architecture being used in modern [Diffusion](/05-image-generation/03-diffusion/05-diffusion.ipynb) models for image generation.
+CNNs were critical for the initial adoption of deep learning - neural networks like [LeNet](/01-deep-neural-networks/02-cnn/02-le-net.pdf) and [AlexNet](/01-deep-neural-networks/03-alex-
+CNN是最开始应用深度学习的关键工作，神经网络类似LeNet和AlexNet
+
+net/01-alex-net.pdf) used the architecture to beat the state-of-the-art in image classification competitions. Additionally CNNs are still relevant in modern models with the [U-Net](/01-
+用到了这个架构，打败了图片分类竞赛中的最好的方法。此外，CNNs仍然是与现代模型相关的，包括U-Net架构被用在现代模型中用于图片生成。
+
+deep-neural-networks/04-u-net/02-u-net.ipynb) architecture being used in modern [Diffusion](/05-image-generation/03-diffusion/05-diffusion.ipynb) models for image generation.
 
 <br />
 
 ### Breakthrough #2: Memory
+###突破 # 2 ：内存
+
 
 The [Recurrent Neural Network](/03-sequence-modeling/01-rnn/02-rnn.ipynb) introduced the ability to store memories about the past to inform future decisions.
+循环神经网络引入了一些能力，可以保存记忆是关于过去，可以强化未来的决策。
 
-While theoretically interesting, it remained largely ineffective for sequence-modeling tasks until the introduction of the [Long Short-Term Memory](/03-sequence-modeling/02-lstm/02-lstm.ipynb) architecture which enabled neural networks to learn complex relationships across time and space by learning to store, retrieve, and [forget](/03-sequence-modeling/03-learning-to-forget/02-learning-to-forget.ipynb) memories over long time horizons.
+While theoretically interesting, it remained largely ineffective for sequence-modeling tasks until the introduction of the [Long Short-Term Memory](/03-sequence-modeling/02-lstm/02-
+尽管理论上很有意思，其有很大的无效性在学列建模的任务上发生，直到出现了长短时记忆架构，
+
+lstm.ipynb) architecture which enabled neural networks to learn complex relationships across time and space by learning to store, retrieve, and [forget](/03-sequence-modeling/03-learning-
+其使得神经网络可以学习复杂的关系跨越时间和空间，通过学会保存，
+to-forget/02-learning-to-forget.ipynb) memories over long time horizons.
+检索和遗忘记忆的方法在一个长时间的范围。
 
 **The LSTM inductive bias made them effective at sequence-modeling tasks, kicking off the arc of progress that eventually led to the creation of the Transformer.**
+这个LSTM归纳偏置使得其能有效的用在序列建模的任务上，拉开了进步的弧线，最终为Transformer出现奠定了基础。
 
 Despite their efficacy, the LSTM was constrained by the fact that it processed input sequences sequentially, making it slow to train.
+尽管这个方法有效，但是LSTM事实上受限于其处理输入序列的顺序性要求，使得其训练很慢。
 
 <br />
 
 ### Breakthrough #3: Attention
+### 突破 #3：注意力
 
-The [Attention](/03-sequence-modeling/06-attention/02-attention.ipynb) mechanism was initially introduced as an addition to LSTMs to enhance their ability to understand the relationship between concepts.
+The [Attention](/03-sequence-modeling/06-attention/02-attention.ipynb) mechanism was initially introduced as an addition to LSTMs to enhance their ability to understand the relationship 
+注意力机制是最初作为LSTM的修补出现，为了增强其能力去理解概念之间的关系。
+between concepts.
 
-The now famous [_Attention Is All You Need_](/04-transformers/01-transformer/01-transformer.pdf) paper removed all the LSTM components and demonstrated that the inductive bias of attention alone is effective for sequence-modeling tasks, introducing the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb) architecture which has permanently changed deep learning.
+The now famous [_Attention Is All You Need_](/04-transformers/01-transformer/01-transformer.pdf) paper removed all the LSTM components and demonstrated that the inductive bias of 
+现在有名的注意力是所有所需要的这篇论文移除了全部的LSTM部分，
+attention alone is effective for sequence-modeling tasks, introducing the [Transformer](/04-transformers/01-transformer/02-transformer.ipynb) architecture which has permanently changed 
+并验证了归纳偏置的注意力单独是可以有效的用于序列建模任务，引入了Transformer架构
+deep learning.
+深远的改变了深度学习领域。
 
 **The transformer is particularly effective not just because of the power of the attention mechanism, but because of the high parallelization it achieved by removing recurrence.**
+Transformer是特别有效，不仅仅因为其注意力机制的能力，也因为其高度的并发性，这是通过提出了循环实现的。
+
 
 <br />
 
 ### Breakthrough #4: Harnessing Randomness
+### 突破 #4：
 
 The CNN introduced the ability to understand samples from the complex distribution of images.
 
