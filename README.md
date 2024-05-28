@@ -166,6 +166,7 @@ With this in mind, we can look at the constraints that govern this process. Let'
 基于这个想法，我们能看到这些约束涉及了这个过程。让我们开始理解数据上的这些约束。
 
 <br />
+
 [^1]: Everyone has different definitions of intelligence, all of which are useful in different contexts, and none of which capture the full picture of what this word means. People may disagree with the specifics of this definition. I've chosen this one for the sake of simplicity to clearly frame what we're trying to achieve with deep learning from an economic perspective- I'm less concerned with it's philosophical implications here.
 
  每一个人对智能有不同的定义，所有这些不同的定义都基于不同的领域，但是都无法完整的概括这个词的含义。人们可能不同意这个定义的论述。我已经有目的选择了一个简单清楚的描述，就是尝试去用深度学习实现经济角度的目标。我在这里没有关注其哲学的意义。
