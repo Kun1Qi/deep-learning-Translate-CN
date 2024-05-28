@@ -675,7 +675,8 @@ the optimizer to adjust step-sizes based on past information, often leading to m
 
 Adam 优化器包含了一个高效的算法，能确保追踪“自适应动量”，去追踪梯度在整个优化的过程中的历史。
 这使得优化器调整单步的大小是基于过去的信息，通常能做到明显更快的收敛。
-[^14]: Specifically in parameter spaces with large variance in the gradients, a certain step-size may cause over-adjustments in certain parts of the landscape, and result in painfully slow changes in other cases.
+
+Specifically in parameter spaces with large variance in the gradients, a certain step-size may cause over-adjustments in certain parts of the landscape, and result in painfully slow changes in other cases.
 
 特别是在参数空间中有很大的方差出现在梯度中，一个确定的单步大小可能导致过度调整出现在损失风景的确定部分，并导致痛苦缓慢的变化出现在其它的情况。
 
@@ -690,8 +691,7 @@ architecture uses [Dropout](/02-optimization-and-regularization/04-dropout/), [L
 (/02-optimization-and-regularization/03-residuals/02-residuals.ipynb) throughout it's architecture, and was trained using the [Adam](/02-optimization-and-regularization/08-adam/)
 optimizer.
 
-之前提到的优势（和相关的进展）都是被用在大部分今天的模型中。
-例如，Transformer架构用了Dropout，Layer Normalization，和Residuals在其架构中，并且在训练中用到了Adam优化器。
+之前提到的优势（和相关的进展）都是被用在大部分今天的模型中。例如，Transformer架构用了Dropout，Layer Normalization，和Residuals在其架构中，并且在训练中用到了Adam优化器。
 
 Because of how effective they've been completely removing prior problems, optimization & regularization appear to be largely solved now.
 This is especially augmented by the fact that we're far from reaching the peak of the scaling laws on current internet-scale datasets, so overfitting is not a concern.
@@ -723,6 +723,7 @@ representations_ that effectively model the empirical distribution.
 By default, deep neural networks are forced to learn the most optimal ways to store representations for different problems.
 However, when we already know an effective method for the model to store useful representations relevant to a particular problem, it can be helpful to build the ability to store 
 representations in this useful form directly into the model.
+
 默认情况，深度神经网络是被强制去学习最优路径去保存表征，用于不同的问题。
 但是，当我们已经知道一个有效的方法用于模型去保存有用的表征去关联到一个特定的问题，这样有助于去构建保存表征到这个有用形式的能力，直接给模型。
 
@@ -745,6 +746,7 @@ In practice, architectural advancements have made previously intractable problem
 > [!NOTE]
 >
 > **Constraint #4: The quality of the network architecture constrains the representational capacity of a model.**
+
 >约束 #4：网络架构的质量约束了模型的表征能力。
 
 Technically, a deep neural network with non-linearities is capable of modeling any distribution, given a sufficient number of parameters[^15].
@@ -839,6 +841,7 @@ deep learning.
 
 
 **The transformer is particularly effective not just because of the power of the attention mechanism, but because of the high parallelization it achieved by removing recurrence.**
+
 Transformer是特别有效，不仅仅因为其注意力机制的能力，也因为其高度的并发性，这是通过剔除了循环实现的。
 
 
