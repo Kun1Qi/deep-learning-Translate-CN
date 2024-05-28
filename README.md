@@ -134,10 +134,13 @@ The goal of deep learning is to produce accurate models of reality for these use
 深度学习的目标是去生成准确的现实世界的模型用于这些任务：
 
 1. Treating the true models that describe reality as complex probability distributions[^3]
+
    用正确的模型来描述真实的世界，使其成为一个复杂的概率分布。
 2. Creating neural networks capable of modeling complex probability distributions
+
    创建神经网络的能力，去建模复杂的概率分布。
 3. Training these networks to learn to model the probability distributions that underlie reality
+
    训练这些网络去学习建模概率分布，能表征真实世界。 
 
 In this view, creating intelligence with deep learning involves just two steps:
