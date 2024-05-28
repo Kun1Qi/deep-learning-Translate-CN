@@ -920,58 +920,100 @@ The combination of different working architectures has also resulted in the incr
 <br />
 
 ## 1.5. Compute
+## 1.5. 计算
 
 ![constraint-5-compute](./images/readme/constraint-5-compute.png)
 
-Assuming an efficient architecture and effective optimization & regularization, the last constraint on the total number of parameters and representational capacity in a model is **compute**.
+Assuming an efficient architecture and effective optimization & regularization, the last constraint on the total number of parameters and representational capacity in a model is 
+**compute**.
+
+假设一个高效的架构和有效的优化和正则化，最后的约束在参数量的总数和模型中的表征能力是算力。
+
 
 During training, the gradient for each parameter needs to be computed and updated at each time-step, which costs computational resources. **So, with more parameters, there are far more computations during back-propagation which becomes the limiting step.**
+
+在训练中，用于每一个参数的梯度需要被计算和更新在每一个时间步骤上，这回消耗很多计算资源。于是，用了更多的参数，就有明显更多的计算需要用在反向传播中，这就变成了制约的步骤。
 
 Because of this, a single device can train a finite number of parameters at once, and beyond this, training has to expand to multiple devices at once to parallelize.
 
 **And if there's a limit on the number of devices we can use for training, we hit a constraint on compute.**
 
+因此，一个单一的设备能训练一个有限数量的参数一次，而超过了，训练就扩展到多个设备去做一次并行。
+
+并且，当有训练用的设备数量有限，我们就碰到的计算约束。
+
 So we can train a certain number of parameters per device. And then we need to get more devices. And if there's a limit on how many devices we can use together, we've hit a constraint on compute.
 
+于是，我们能训练明确数量的参数在每一个设备上。并随后需要用到更多的设备。并且当我们能用到的总设备数量有限，我们就已经碰到了计算约束。
 > [!NOTE]
 >
 > **Constraint #5: The total available compute constraints the maximum number of trainable parameters a model can have.**
 
+>约束 #5：总共的可用计算约束，限制了一个模型可训练参数的最大值。
+
 In practice, the constraint may be caused by a lack of resources (to buy devices), supply (due to constrained supply chains), or energy (discussed later)[^17].
+
+实际上，这个约束可能是由于缺少资源（去买设备），供应（这是由于供应链制约），或能源（后面讨论）
 
 <br />
 
 [^17]: There are also many engineering challenges with training on increasingly large clusters of devices like GPUs that need to be able to communicate with each other.
+[^17]:也有大量的工程挑战出现在训练递增的大型设备集群上，类似这些GPU需要互相通信。
 
 ### Breakthrough #1: Communicating Compute
 
+### 突破 #1：通信计算
+
 [AlexNet](/01-deep-neural-networks/03-alex-net/02-alex-net.ipynb) was one of the first major deep learning applications that took advantage of the parallelization capacity of GPUs to train neural networks.
+
+AlexNet是第一个主要的深度学习应用用到了GPU的容量优势去训练神经网络。
 
 They were also the first people to train a deep learning model across multiple GPUs at once to speed up training.
 
+其作者也是第一批人训练一个深度学习模型在多个GPU上，同时提升训练速度。
+
 **They were able to accomplish this because of the recent addition of the ability for NVIDIA GPUs to write to each others memory**, which enabled much faster direct communication between GPUs rather than communicating through the host machine.
+
+他们能做到这些是因为近期Nvidia的GPU增加了能力，可以相互写内存，这使得GPU之间能显著的更快通信，远远超过了通过主机通信。
 
 This innovation (introduced due to gaming, not deep learning), has become critical in training large models, where communication between large clusters of GPUs has become essential.
 
+这个创新（其引入是因为游戏，不是为了深度学习），已经变成了训练大模型的关键，其中在大型的GPU集群之间的通信已经变成主要内容。
+
 This paper pushed the compute constraint in several ways - first, just by using GPUs for training the first place, and additionally by using multiple GPUs to shard training, and using inter-GPU communication.
 
+本文已经推出的计算约束有几种情况。首先，只是用了GPU去训练第一位的，并额外的通过使用多个GPU去做碎片训练，斌够用了GPU内部的通信。
 <br />
 
 ### Breakthrough #2: Riding Tailwinds
 
+### 突破 # 2：顺风车
+
 Until the past decade, the GPUs that have enabled deep learning to progress so far were driven forward not by the incentives of deep learning (which offered scarce revenue opportunity early-on for large companies like NVIDIA), but by the tailwinds of the gaming market.
+
+直到过去的十年，GPU已经让深度学习一直在进步，但是深度学习没有激励GPU的进步（其在前期只是提供了很少的盈利机会给大公司，类似Nvidia），而是借用了游戏市场的顺风车。
 
 In this way, deep learning benefited from a bit of luck - the compute tailwinds created by the gaming industry enabled deep learning to take off in a way that likely would not have happened in the absence of gaming.
 
+于是，深度学习受益于这点运气-其算力是借助游戏工业创造的顺风车，能让深度学习借此起飞，如果缺少游戏则这一切可能不会发生。
+
 **The gaming industry raised the constraint on compute for deep learning models by creating a sufficient financial incentive to produce GPUs of increasing quality.**
 
+游戏工业解决了计算深度学习模型的问题，是通过创建足够商业激励去生产质量不断提升的GPU的方式。
+
 Through the trail of papers, you can see the quality of compute slowly get better over time, even before dedicated AI compute was created.
+
+通过本文中的实验，你能看到计算的质量缓慢的随着时间改善，甚至是主流的AI计算开始之前。
 
 <br />
 
 ### Breakthrough #3: AI Gets Prioritized
 
+### 突破3 ：AI优先
+
 Finally, in 2020, NVIDIA released their A100 model built specifically for AI applications, as they determined that AI was a strategic bet worth taking. This decision has now yielding the H100, and soon B100 GPUs that will power much of AI training.
+
+最终，在2020年，Nvidia发布了其A100模型的构建是专用于AI的应用，因为他们决定AI是要给值得做出的战略赌博。这个决定现在产生了H100，并很快B100GPU将用于AI的训练。
 
 <p align="center">
   <img src="/images/readme/nvidia-openai.jpeg" alt="NVIDIA x OpenAI" width="50%" />
@@ -983,30 +1025,51 @@ Finally, in 2020, NVIDIA released their A100 model built specifically for AI app
 <br />
 
 ### Breakthrough #4: The Compute Arms Race
+### 突破 #4 ：算力军备竞赛
 
 It wasn't initially obvious that acquiring compute would become a huge constraint.
 
+之前还不是很明朗关于算力将变成巨大的约束。
+
 The power laws trend that first became visible with [BERT](/04-transformers/02-bert/01-bert.pdf), [RoBERTa](/04-transformers/02-bert/02-roberta.pdf), [GPT-2](/04-transformers/04-gpt/01-gpt-2.pdf), and [GPT-3](/04-transformers/04-gpt/02-gpt-3.pdf) made it clear that scaling up parameters, and thus compute, was a necessary factor of increasing model intelligence.
+
+大力出奇迹的趋势首次出现是因为BERT，而RoBERTa，GPT-2和GPT-3，使得这一切变得清楚，要扩大参数规模，并因此算力是一个提升模型能力的必要因素。
 
 As this trend became more clear and the AI narrative became more powerful, everyone began to acquire the necessary compute, leading to a demand volume that wasn't previously predicted by the supply-chain. This has caused a constraint in acquiring compute.
 
+因为这个趋势变得如此明朗，AI论述变得更强大，每个人都开始争取必要的算力，导致一个前所未有的需求，这对于供应链而言是始料未及的。这是由于获取算力上的制约造成的。
+
 **In addition, the raw cost of acquiring a large amount of compute has become prohibitively expensive for most players.**
+此外，原始的获取大量的算力的成本开始变得对大部分参与者而言变得难以企及。
 
 These constraints on compute led [Sam Altman to say that "compute is going to be the currency of the future."](https://www.youtube.com/watch?v=r2UmOBrrRK8)
 
+这些制约在算力上，导致了Sam Altman说出了“算力变成了未来的货币”
+
 [Zuck spent several billion to buy 350,000 NVIDIA GPUs](https://www.pcmag.com/news/zuckerbergs-meta-is-spending-billions-to-buy-350000-nvidia-h100-gpus), which now appears to be an act of incredible foresight considering the current struggle to get compute.
 
+Zuck过去花了数十亿购买了350000张Nvidia GPU，这在现在看来成了难以置信的远见，基于现在获得算力的竞争而言。
+
 This increased demand for compute has also been reflected in the surging market caps of all the essential companies in NVIDIA's compute supply chain including TSMC & ASML.
+
+这些已经增长的需求已经影响了激增的市场，到达了Nvidia的供应链背后的公司的上线，包括TSMC和ASML。
 
 <br />
 
 ### Adjusting Supply Chains
+### 调整供应链
 
 The current constraint on compute is partially a result of compute supply chains not having predicted the unexpected jump in demand caused by the AI boom.
 
+当前制约算力的，主要是算力供应链没有预计到AI爆炸性算力的需求跳增导致。
+
 As supply chains inevitably adjust to meet these demands, the constraint will likely shift from who has already obtained the most compute to who has the resources to purchase the most compute, which also positions OpenAI well considering their partnership with the well-resourced Microsoft.
 
+因为供应链不可避免的调增去应对这些需求，这些制约将可能从谁已经得到最多的算力，转移到谁由这些资源去得到最多的算力，这也使得OpenAI考虑与有很多资源的Microsoft保持合作关系。
+
 <br />
+
+### AI ASICs
 
 ### AI ASICs
 
