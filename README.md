@@ -565,11 +565,9 @@ In practice, the actual depth of a network is constrained by the efficacy of the
 ### Breakthrough #1: Taming Gradients
 ### 突破 #1：控制梯度
 
-While training deeper neural networks with [backpropagation](/01-deep-neural-networks/01-dnn/02-dnn.ipynb), gradients start to get magnified or disappear, due to the compounding effects of multiplication by sequences of large or small 
+While training deeper neural networks with [backpropagation](/01-deep-neural-networks/01-dnn/02-dnn.ipynb), gradients start to get magnified or disappear, due to the compounding effects of multiplication by sequences of large or small weights[^12].
 
 尽管训练更深的神经网络实用反向传播，这些梯度开始放大或消失，这是由于混合了乘以一些列的很大或很小的权重的效果。
-
-weights[^12].
 
 **This is known as the vanishing and exploding gradients problem.**
 
@@ -677,8 +675,6 @@ the optimizer to adjust step-sizes based on past information, often leading to m
 
 Adam 优化器包含了一个高效的算法，能确保追踪“自适应动量”，去追踪梯度在整个优化的过程中的历史。
 这使得优化器调整单步的大小是基于过去的信息，通常能做到明显更快的收敛。
-
-
 [^14]: Specifically in parameter spaces with large variance in the gradients, a certain step-size may cause over-adjustments in certain parts of the landscape, and result in painfully slow changes in other cases.
 
 特别是在参数空间中有很大的方差出现在梯度中，一个确定的单步大小可能导致过度调整出现在损失风景的确定部分，并导致痛苦缓慢的变化出现在其它的情况。
