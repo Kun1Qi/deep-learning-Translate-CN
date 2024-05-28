@@ -1065,7 +1065,7 @@ The current constraint on compute is partially a result of compute supply chains
 
 As supply chains inevitably adjust to meet these demands, the constraint will likely shift from who has already obtained the most compute to who has the resources to purchase the most compute, which also positions OpenAI well considering their partnership with the well-resourced Microsoft.
 
-因为供应链不可避免的调增去应对这些需求，这些制约将可能从谁已经得到最多的算力，转移到谁由这些资源去得到最多的算力，这也使得OpenAI考虑与有很多资源的Microsoft保持合作关系。
+因为供应链不可避免的调整去应对这些需求，这些制约将可能从谁已经得到最多的算力，转移到谁由这些资源去得到最多的算力，这也使得OpenAI考虑与有很多资源的Microsoft保持合作关系。
 
 <br />
 
@@ -1075,107 +1075,184 @@ As supply chains inevitably adjust to meet these demands, the constraint will li
 
 In recent fundraising cycles, many startups have raised money to build dedic-ated AI chips for inference and training, promising to further speed up the efficiency of training large models.
 
+随着近期的基础循环，大部分的初创开始花钱去造定制的AI芯片用来推理和训练，希望去进一步提升训练大模型的效率。
+
 These specialized chips, broadly known as **Application Specific Integrated Circuits**, build assumption about how deep learning models work directly into hardware, offering the ability to drastically accelerate training.
 
+这些专用的芯片，被称为“特定用途的集成电路”，构造设定是如何使得深度学习模型直接在硬件上工作，具备能力去显著加速训练。
+
 The question is, will other companies be able to compete in this space, or will NVIDIA maintain it's domination of the AI training market (most likely).
+
+而问题是，其它的公司将会在这个领域竞争吗，或者说，Nvidia将回保持其AI训练市场的主导地位吗（很像是）。
 
 <br />
 
 ## 1.6. Compute Efficiency
 
+## 1.6. 算力效率
+
 ![constraint-6-compute-efficiency](./images/readme/constraint-6-compute-efficiency.png)
 
 While the power of compute increases, making effective use of this compute is not a guarantee. Using compute efficiently is a software problem that takes active effort and optimization.
 
+尽管算力在增长，高效的应用算力是不确定的。使用算力的效率是一个软件问题，这激励了一些工作去做优化。
+
 Innovations like [FlashAttention](https://arxiv.org/abs/2205.14135), which drastically accelerated the speed of Transformers through an optimization in how attention access memory, are a reminder that compute optimizations are another lever to increase the efficiency of training and scale up models.
 
+一些创新，如FlashAttention，其显著的加速了Transformer，通过去优化使得注意力如何使用内存，从另一方面提醒了，算力优化是另一个手段可以提升训练的效率，并扩大模型。
+
 > [!NOTE]
->
+
+>注意
 > **Constraint #6: The software implementations for training constrain the efficiency of compute utilization.**
+     约束 #6：软件实现的训练约束了计算的应用效率。
 
 <br />
 
 ### Breakthrough #1: CUDA
+### 突破 #1 CUDA
 
 Initially, GPUs were challenging to work with as they depended on a completely new programming paradigm.
 
+开始，应用开发在GPU上是有挑战性的工作，因为这依赖于全新的变成方法。
+
 The introduction of [CUDA](https://en.wikipedia.org/wiki/CUDA) as a GPU programming paradigm familiar to C programmers made writing GPU code far more approachable.
 
+CUDA出现作为一个GPU变成的方法，让熟练的c程序员写GPU代码变得非常容易。
+
 This language enabled [AlexNet](/01-deep-neural-networks/03-alex-net/01-alex-net.pdf) to manually implement their own kernels to speed up the convolution operation on GPUs, unlocking a new level of parallelization for training CNNs.
+
+这个语言使得AlexNet手工的实现了其自有的内核程序去加速GPU上的卷积计算，解锁了新层级的并行方法用于训练CNN。
 
 <br />
 
 ### Breakthrough #2: Kernel Libraries
+### 突破 #2 ：内核库
 
 People rarely have to write low-level kernels anymore since popular libraries like [PyTorch](https://pytorch.org/) and [JAX](https://github.com/google/jax) have already written the kernel code for the most popular kernels, making it easy for modern deep learning engineers to use GPUs without needing to dip into low-level code.
+
+人们很少写底层的任何内核，因为流行的库，如Pytorch和Jax已经写了内核代码，是最流行的内核，使得当代的深度学习工程师能很容易的去使用GPU，无需了解底层的代码。
 
 <br />
 
 ### Continuous Improvement
 
+### 持续进步
+
 Despite the fact that GPU kernels are now largely written, there are likely still plenty of opportunities for improving the compute efficiency of model implementations - notably, the introduction of [FlashAttenion](https://arxiv.org/abs/2205.14135) demonstrated how big of a difference these changes could make in terms of training efficiency.
+
+尽管实际上GPU内核现在被大量的写出了，仍然有大量的机会去提升模型实现的计算效率-注意，FlashAttention的出现验证了这些变化能使得训练效率上有怎样的变化。
 
 <br />
 
 ## 1.7. Energy
 
+## 1.7. 能源
+
 ![constraint-7-energy](./images/readme/constraint-7-energy.png)
 
 **Finally, even if the compute supply chains are capable of supporting all demand, and we have infinite resources to purchase compute, there is still a constraint on compute: energy**
 
+最后，甚至当算力供应链是足够支撑所有的需求，并且我们有无限的资源去得到算力，仍然有一个算力约束：能源。
+
 In practice, large training runs need to be run on physically clustered compute in large data centers since the devices need to communicate with each other.
+
+实际上，大型的训练运行需要被循行字物理的集群，计算用了大型的数据中心，因为这些设备需要相互通信。
 
 As the amount of devices in large training runs grows, datacenters will need to be able to support the energy needs of these devices.
 
+因为设备的数量在大型的训练运行时增长，数据中心将需要能去支持这些设备所需的能源。
+
 This may actually become a meaningful constraint, as [Zuck discussed in this clip on the Dwarkesh podcast](https://www.youtube.com/watch?v=i-o5YbNfmh0).
 
+这可能实际变成了一个重要的约束，因为Zuck过去讨论了这个片段在Dawrkesh podcase上。
+
 Specifically, energy grids are limited to allowing a certain amount of energy being drawn from them in a location, meaning there's a cap to how large data-centers can become before they run into problems that require energy permitting and dipping into much slower government regulated processes.
+
+确切的说，能源网是限制了让某些数量的能源被局部的使用，意味着对于大型的数据中心有一个上限，后面的问题是需要能源批准，并落入了非常慢的政府审批流程。
 
 > [!NOTE]
 >
 > **Constraint #7: The energy available to draw from the grid in a single location constrains the amount of compute that can be used for a training run.**
 
+> ##u约束 #7：在单一地点能从电网得到的能源，制约了能被用于训练使用的算力的数量。 
+
 As many companies plan to build large data-centers for AI training, we'll see how the energy constraint plays out - notably, [Microsfot and OpenAI are rumored to be launching a $100B data-center project](https://www.reuters.com/technology/microsoft-openai-planning-100-billion-data-center-project-information-reports-2024-03-29/).
+
+因为大量的公司计划去构建大型的数据中心用于AI训练，我们将看到能源制约如何能出现-注意，Microsoft和OpenAI被传言要发起100B的数据中心项目。
 
 <br />
 
 ## 1.8. Constraints & Leverage
 
+## 1.8. 约束和利用
+
 Having covered each constraint individually, we can now put them all into perspective in relation to the broader arrow of progress in deep learning.
+
+已经覆盖了每一个独立的约束，我们现在能将其放在一块，透视深度学习领域相关的更广阔的发展方向。
 
 **A helpful way to think about the 7 constraints is in terms of _hard constraints_ and _leverage_.**
 
+一个有希望的方向是去思考7个约束中的哪些是硬约束并利用。
+
 The hard constraints are **data**, **compute**, and **energy** - these are rate-limited by slow processes - data currently being limited by the scaling growth of the internet and other data collection methods, compute being limited by individual company resources and supply chains, and energy constraints eventually being rate-limited by regulation.
+
+这个硬约束是数据，算力和能源-这些是被减慢的过程限制了增长-数据当前受限于互联网增长的规模，以及其它数据的采集方法，算力受制于单一公司资源和供应链，而能源约束最终是受到审批的约束。
 
 Meanwhile, **parameters**, **optimization & regularization**, **architecture**, and **compute efficiency** can be thought of as forms of **leverage** on the hard constraints - they are all easy to vary and can be optimized to maximize a models intelligence given a fixed set of data, compute, and energy.
 
+于此同时，参数，优化和正则化，架构和计算效率能被认为是某种形式在硬约束上利用的-这些都是容易改变的，并能被优化后去最大化一个模型的智能，基于一个固定的数据数据集，算力和能源。
+
 **Maximizing leverage constraints are important for individual training runs, but improving the hard constraints is what really pushed forward the increasing base intelligence of models now.**
 
+最大化利用的约束对于独立训练的运行是很重要的，但是提升硬约束是其中现在能真正推动向前增长模型基础智能的。
+
+
 This is again indicative of the scaling laws - our models have not shown signs of coming close to fully modeling the information in current internet-scale datasets, so we continue to scale up models by increasing _compute_ and _parameters_
+
+这再次印证了放大的法则-我们的模型还没有展现出接近了全面建当前互联网规模数据集的信号，于是我们继续去扩大模型规模，只有通过增加算力和参数的方式。
 
 <br />
 
 # 2. Narratives
 
+# 2. 论述
+
 We can look back at this history of progress in deep learning through the lens of constraints, and see a few key milestones that stand out above the rest which have completely shifted narratives around deep learning.
 
+我们能从这些约束的视角去回看深度学习历史，并看到了一些关键的里程碑出现在其中，已经完全的改变了深度学习的论述。
+
 Since narratives are a powerful tool for allocating capital and talent toward problems[^18], these narrative shifts alone have had a significant impact on deep learning progress.
+
+因为这些叙事是一个强大的工具可以分配资源和人才去解决这些问题。
 
 <br />
 
 [^18]: For those curious, [Kevin Kwok's essay on Narrative Distillation](https://kwokchain.com/2021/09/29/narrative-distillation-1/) an excellent exploration of the power of narratives in capital and resource allocation.
+对于那些好奇的事情，Kevin Kwok关于叙事性蒸馏的文章，一次出色的关于能力和资源的分配的叙事探索。
 
 ### Narrative #1: Deep Learning Works
+### 叙事 #1：深度学习可用
 
 The first major narrative shift in deep learning occured after the release of [AlexNet](/01-deep-neural-networks/03-alex-net/01-alex-net.pdf) in 2012.
 
+第一次主要的叙事变化关于深度学习，发证在发布了AlexNet之后的2012。
+
 Prior to this paper, deep learning was considered inferior to traditional ML, as it consistently lost to manual feature engineering approaches in image classification and other challenges.
+
+这篇文章之前，深度学习被认为不如传统的机器学习，因为一直输给手工特征工程的方法在图片分类和其它的挑战赛中。
 
 The success of AlexNet brought down the top-5 error rate on the ImageNet challenge from 25.8% to 16.4%, blowing the previous state-of-the-art out of the water.
 
+AlexNet成功的打败了ImageNet挑战赛的前五名，提升了25.8%到16.4%，将之前最好的方法炸出了水面。
+
 This directly enabled further innovations like [GoogLeNet](https://arxiv.org/abs/1409.4842) and [ResNet](/02-optimization-and-regularization/03-residuals/02-residuals.ipynb), but more importantly, it shifted attention back on deep learning and created new interest in the field.
 
+这直接促成了接下来的创新，如GoogleNet，ResNet，但是更重要的是，这将大家的注意力拉回了深度学习，并在这个领域创造了新的生机。
+
 The narrative shift that occured as a result of this work was from one of skepticism about the utility of deep learning to belief that it was a viable, and even superior approach to traditional machine learning.
+
+这个叙事转变发生
 
 This narrative shift was essential to get us to the point that we're at today, and it seems that Ilya Sutskever (who co-authored AlexNet) realized how scaling laws would playout long before it reached consensus, as [discussed in this interview with Geoffrey Hinton](https://www.youtube.com/watch?v=n4IQOBka8bc).
 
