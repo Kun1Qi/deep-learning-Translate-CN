@@ -156,19 +156,14 @@ With this in mind, we can look at the constraints that govern this process. Let'
 
 <br />
 
-[^1]: Everyone has different definitions of intelligence, all of which are useful in different contexts, and none of which capture the full picture of what this word means. People may disagree with the specifics of this definition. I've 
-      每一个人对智能有不同的定义，所有这些不同的定义都基于不同的领域，但是都无法完整的概括这个词的含义。人们可能不同意这个定义的论述。我已经
-chosen this one for the sake of simplicity to clearly frame what we're trying to achieve with deep learning from an economic perspective - I'm less concerned with it's philosophical implications here.
-有目的选择了一个简单清楚的描述，就是尝试去用深度学习实现经济角度的目标。我在这里没有关注其哲学的意义。
+[^1]: Everyone has different definitions of intelligence, all of which are useful in different contexts, and none of which capture the full picture of what this word means. People may disagree with the specifics of this definition. I've chosen this one for the sake of simplicity to clearly frame what we're trying to achieve with deep learning from an economic perspective- I'm less concerned with it's philosophical implications here.
 
-[^2]: Karl Friston's [Free Energy Principle](https://www.nature.com/articles/nrn2787) suggests that this definition of intelligence is also valid in the context of the brain (beware, the paper is explained with unnecessary mathematical 
-      Karl Friston的自由能量法则论述的这个智能的定义，也可以用在大脑相关的内容中（当心，这篇论文的了中包含了不必要的复杂数学
-complexity, but the core concept it describes is simple). Notably, intelligence systems create models of the world and then use those models to perform _active inference_ to modify their environments.
-但是，核心概念的论述是简洁的）。注意，智能系统创建世界模型，并用这些模型去做活动的推理，来改变其环境。
-[^3]: This idea may seem unintuitive at first. But it's actually saying something very simple: (1) reality has a set of rules that govern what happens (2) we can model these rules by assigning probabilities to what's likely to happen, 
-      这个想法首先看起来不够直观。但是其实际论述的事情很简单：（1）现实世界有一组规则能控制什么会发生（2）我们能建模这些规则，用了分配概率的方式，去定义什么要发生，
-given what has already happened (3) thus, these models are probability distributions. Again, the [Free Energy Principle](https://www.nature.com/articles/nrn2787) supports this view of modeling reality.
-量化已经发生的（3）因此，这些模型都是概率分布。而且，自由能量法则支持这个建模真实世界的观点。
+ 每一个人对智能有不同的定义，所有这些不同的定义都基于不同的领域，但是都无法完整的概括这个词的含义。人们可能不同意这个定义的论述。我已经有目的选择了一个简单清楚的描述，就是尝试去用深度学习实现经济角度的目标。我在这里没有关注其哲学的意义。
+
+[^2]: Karl Friston's [Free Energy Principle](https://www.nature.com/articles/nrn2787) suggests that this definition of intelligence is also valid in the context of the brain (beware, the paper is explained with unnecessary mathematical complexity, but the core concept it describes is simple). Notably, intelligence systems create models of the world and then use those models to perform _active inference_ to modify their environments.
+ Karl Friston的自由能量法则论述的这个智能的定义，也可以用在大脑相关的内容中（当心，这篇论文的了中包含了不必要的复杂数学，但是，核心概念的论述是简洁的）。注意，智能系统创建世界模型，并用这些模型去做活动的推理，来改变其环境。
+[^3]: This idea may seem unintuitive at first. But it's actually saying something very simple: (1) reality has a set of rules that govern what happens (2) we can model these rules by assigning probabilities to what's likely to happen, given what has already happened (3) thus, these models are probability distributions. Again, the [Free Energy Principle](https://www.nature.com/articles/nrn2787) supports this view of modeling reality.
+  这个想法首先看起来不够直观。但是其实际论述的事情很简单：（1）现实世界有一组规则能控制什么会发生（2）我们能建模这些规则，用了分配概率的方式，去定义什么要发生，量化已经发生的（3）因此，这些模型都是概率分布。而且，自由能量法则支持这个建模真实世界的观点。
 
 ## 1.1. Data
    1.1. 数据
