@@ -168,6 +168,7 @@ With this in mind, we can look at the constraints that govern this process. Let'
 Everyone has different definitions of intelligence, all of which are useful in different contexts, and none of which capture the full picture of what this word means. People may disagree with the specifics of this definition. I've chosen this one for the sake of simplicity to clearly frame what we're trying to achieve with deep learning from an economic perspective- I'm less concerned with it's philosophical implications here.
 
  每一个人对智能有不同的定义，所有这些不同的定义都基于不同的领域，但是都无法完整的概括这个词的含义。人们可能不同意这个定义的论述。我已经有目的选择了一个简单清楚的描述，就是尝试去用深度学习实现经济角度的目标。我在这里没有关注其哲学的意义。
+ 
  Karl Friston's [Free Energy Principle](https://www.nature.com/articles/nrn2787) suggests that this definition of intelligence is also valid in the context of the brain (beware, the paper is explained with unnecessary mathematical complexity, but the core concept it describes is simple). Notably, intelligence systems create models of the world and then use those models to perform _active inference_ to modify their environments.
 
  Karl Friston的自由能量法则论述的这个智能的定义，也可以用在大脑相关的内容中（当心，这篇论文的了中包含了不必要的复杂数学，但是，核心概念的论述是简洁的）。注意，智能系统创建世界模型，并用这些模型去做活动的推理，来改变其环境。
@@ -182,22 +183,25 @@ Everyone has different definitions of intelligence, all of which are useful in d
 ![constraint-1-data](./images/readme/constraint-1-data.png)
 
 We've established that the goal of deep learning is to model the probability distributions that describe reality.
+
 我们已经构建了深度学习的目标，就是去建模概率分布去表达真实的世界。
 
 Let's call the distribution that we're trying to model for a specific task the _true distribution_. In order to learn about the true distribution, we collect many samples from it. These samples make up a _dataset_.
+
 我们把这些尝试建模一个特定任务的分布称为真实的分布。为了去学习这个真实的分布，我们在其之上收集大量的样本。这些样本构成了一个数据集。
 
 The dataset contains some information about the true distribution, but it doesn't contain _all_ information about the true distribution[^4]. Because of this, the dataset represents an approximation of the true distribution, which we'll 
-这个数据集包含了一些信息是关于真实分布的，但是没有包含这个真实分布的全部信息。因此，这个数据集近似的表征了这个真实分布，被我们称为经验分布。
 call the _empirical distribution_.
+
+这个数据集包含了一些信息是关于真实分布的，但是没有包含这个真实分布的全部信息。因此，这个数据集近似的表征了这个真实分布，被我们称为经验分布。
 
 **At best, we can expect our neural network to learn to model this empirical distribution[^5].**
 最好的情况，我们能期望神经网络去学习建模这个经验分布。
 
 However, our original goal was to model the true distribution. To account for this, we need the empirical distribution to be **a good approximation** of the true distribution. The quality of this approximation determines the cap of how 
-但是，我们开始的目标是去建模真实的分布。因此，我们需要这个经验分布要成为一个很好近似的真实分布。
 good a model trained on the dataset can get.
-这个近似的质量决定了训练在这个数据集上的模型有多好。
+
+但是，我们开始的目标是去建模真实的分布。因此，我们需要这个经验分布要成为一个很好近似的真实分布。这个近似的质量决定了训练在这个数据集上的模型有多好。
 
 This is the first constraint on the intelligence of a neural network.
 这是关于一个神经网络智能上的第一个约束。
@@ -206,9 +210,11 @@ This is the first constraint on the intelligence of a neural network.
 > 注意
 >
 > **Constraint #1: A model can only be as good as the dataset it was trained on.**
+> 
 > 约束#1：一个模型只能训练达到与其所用数据集一样的质量。
 >
 > Specifically, the cap on how well a model can approximate the true distribution is determined by how much information about the true distribution is contained within the dataset.
+> 
 > 确切的，一个模型有多好的去近似真实的分布，是由包含在其训练数据集中的真实分布的信息数量决定。
 
 <br />
