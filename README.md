@@ -1252,154 +1252,272 @@ This directly enabled further innovations like [GoogLeNet](https://arxiv.org/abs
 
 The narrative shift that occured as a result of this work was from one of skepticism about the utility of deep learning to belief that it was a viable, and even superior approach to traditional machine learning.
 
-这个叙事转变发生
+这个叙事转变为，这个工作产生的一个结果是来自怀疑论，即深度学习使用到信任是可能的，并且甚至是比传统机器学习出色的方法。
 
 This narrative shift was essential to get us to the point that we're at today, and it seems that Ilya Sutskever (who co-authored AlexNet) realized how scaling laws would playout long before it reached consensus, as [discussed in this interview with Geoffrey Hinton](https://www.youtube.com/watch?v=n4IQOBka8bc).
+
+这个叙述转变本质上使得我们来到了今天的这个点，而且看起来Ilya Sutskever（AlexNet作者之一）实现了放大法则将长期有效，直到平衡，类似Geoffrey Hinton在访谈中提到的。
 
 <br />
 
 ### Narrative #2: Internet Scale Data
 
+### 叙事 #2：互联网尺度数据
+
 The [_Attention Is All You Need_](/04-transformers/01-transformer/02-transformer.ipynb) paper created a massively parallelizable architecture that enabled training on internet scale datasets.
+
+注意力是你所需要的这篇论文创造了大型的并行架构，能用来训练互联网规模的数据。
 
 The introduction of the Transformer alone was not what created the largest narrative shifts though.
 
+单单只有Transformer的出现，并不能创建出最大的叙述转变。
+
 Arguably, it was the introduction of [BERT](/04-transformers/02-bert/03-bert.ipynb) that really showed how transformers could take advantage of massive datasets scraped from the internet via pre-training and fine-tuning, which kicked off the modern trends in AI focusing on achieving general intelligence.
+
+确实，由于BERT的出现，真正的证明了Transformer是有优势去处理大规模的来自互联网的数据集，通过预训练和微调的方法，这样使得现代AI的趋势和焦点转向了实现通用智能。
 
 Because of it's transfer learning approach, BERT achieved state-of-the-art results on many NLP tasks withou training on them explicitly, showing one of the first indications of some form of _generalized_ intelligence.
 
+因为这个迁移学习的方法，BERT实现了最优的结果在大量的MLP任务上，无需显示的在上面训练得到，第一次证明了某种形式的通用智能。
+
 The shock caused by BERT is evident in the [Google executive statement](https://x.com/TechEmails/status/1756765277478621620) claiming that BERT will replace all the 20 years of progress on the search product.
+
+BERT带来的震撼是在Google Executive Statement声明的，BERT将取代搜索产品在20年的全部进步。
 
 <br />
 
 ### Narrative #3: Scaling Laws
 
+### 叙事 #3 ：放大法则
+
 The arrow of progress defined by the improvements from [GPT-2](/04-transformers/04-gpt/01-gpt-2.pdf) to [GPT-3](/04-transformers/04-gpt/02-gpt-3.pdf) onwards created the scaling laws narrative that dominates the current public sentiment.
+
+进步的方向定义是从GPT-2到GPT-3持续创造放大法则论述主宰了当前的公共看法。
 
 Importantly, OpenAI took a bet on the scaling laws early on, well before they were widely recognized as being valid[^19]. A few years ago, most people thought the scaling laws were naive.
 
+重要的是，OpenAI在早期放大法则上的赌博，要早于这些被广泛的认为有效。几年前，大部分人认为缩放法则是幼稚的。
+
 Now, they look clear in hindisght because of the series of bets OpenAI took to validate these laws, with GPT-2 and GPT-3 further validating their hypothesis.
+
+现在，这些被清楚的看到是事后了，因为OpenAI一系列的赌博都验证了这个法则，从GPT-2到GPT-3进一步验证了这个假设。
 
 **Extrapolating out the progression of scaling laws correctly is challenging** - as [Zuck points out in this clip](https://www.youtube.com/watch?v=i-o5YbNfmh0), trends like these rarely continue until we reach the goal - we usually run into bottlenecks and then have to readjust strategy.
 
+缩放法则正确性的持续外溢是一个挑战，因为Zuck在视频中指出，这些趋势很少持续到我们抵达目标之前，我们通常碰到瓶颈，并要去调整策略。
+
 In this context, the question is how far the empirical distribution of the internet dataset will take. Framed differently - how close is the empirical distribution of the internet to the true distribution of the model of reality?
+
+在这些说法中，问题是互联网数据集中的经验分布能用到何时，换句话说，互联网中的经验分布离真实模型分布还有多远？
 
 This will determine when we hit a carrying capacity on how much better our models can get by scaling parameters to train on the internet.
 
+这将决定我们何时触碰到在互联网上训练的更好模型模型用缩放参数所能得到的容量。
+
 **This narrative is also a good indicator of how impactful narratives are in fundraising.**
+
+这个论述也是一个很好的指标，即有影响的论述是如何出现的？
 
 The AGI narrative may be the most powerful narrative in history since it can claim that "everything else economically valuable will be solved by this problem."
 
+这个AGI论述可能是历史上最强大的论述，因为其声称“所有其它的经济价值将通过这个问题而得到解决”
+
 Clearly, this was used effectively with the [rumored $7T OpenAI fundraising attempt](https://www.wsj.com/tech/ai/sam-altman-seeks-trillions-of-dollars-to-reshape-business-of-chips-and-ai-89ab3db0) (which was of course just a rumor, but an indication of the power of the AGI narrative, since people believed it was a possibility).
+
+很清楚，这被有效用到了，如传说的7万亿美元的OpenAI基础投入计划（这当然还是一个传言，但也是AGI论述能力的一个指示，因为人们都相信这是可能的做到）
 
 <br />
 
 [^19]: In Theil terms, you could frame this as OpenAI's "secret" or something they believe that others don't.
+关于THeil，你可以将其描述为OpenAI的“秘密”或一些其他人不信的事情。
+
 
 # 3. Inspiration
+# 3. 启发
 
 Where do the ideas that have led to breakthroughs in deep learning come from?
 
+接下来深度学习将会产生的突破会来自哪些想法？
+
 When we look at the history of progress, we can see several common sources of inspiration that appear frequently.
+
+当我们看到历史上的进步，我们能看到一些常见的灵感来源是频繁出现。
 
 <br />
 
 ### Neuroscience
 
+神经科学
+
 The most apparent source of direct inspiration for many advancements in deep learning is neuroscience.
+
+大部分明显的直接灵感源头在大部分的深度学习进步中是来自神经科学。
 
 The [CNN](/01-deep-neural-networks/02-cnn/01-cnn.pdf) is almost directly inspired by the visual system in the brain, and it led to significant advancements in deep learning.
 
+CNN几乎直接受到大脑视觉系统的启发，并在深度学习中产生了明显的优势。
+
 Similarly, the effectiveness of [ReLU](/02-optimization-and-regularization/02-relu/) is explained in terms of the energy efficiency of sparse representations for concepts in the brain.
+
+类似的，有效的应用ReLU解释了系数表征的能量效率，这也是来自脑科学的概念。
 
 Other systems, like the [LSTM](/03-sequence-modeling/02-lstm/02-lstm.ipynb) and [Attention](/03-sequence-modeling/06-attention/02-attention.ipynb) mechanisms appear to draw from neuroscientific concepts (memory and attention) on a surface level, although in reality, their implementations are more motivated by the math of neural networks and engineering to specific problems rather than they are directly modeled after the brain.
 
+其它的系统，类似LSTM和Attention机制的出现，是来自神经科学概念（记忆和注意力），是在一个外观的层级上，尽管实际上这些实现是受到神经网络和工程化在特定问题上的数学的驱动，而不是直接通过大脑建模得到。
+
 For example, the LSTM design is perfectly engineering to address the vanishing & exploding gradients problem in RNNs, and it happens that a long-term memory based system is an effective way to fix this problem.
+
+例如，LSTM设计是完美的工程化的解决了RNN中的梯度消失和爆炸的问题，并其证明了一个基于长期记忆的系统能有效的解决这个问题。
 
 This pattern suggests that rather than taking direct inspiration from neuroscience, **deep learning may have converged on similar approaches to how nature has built intelligence in the brain, partly through first principles.**
 
+这个方案证明了其并不是直接受到神经科学的启发，深度学习可能已经收敛到了类似在大脑中构建智能的本质，部分用到了第一性原理
+
 This is a nice ex-post rationalization, but may overly construct a clean narrative that doesn't actually reflect the situation.
+
+这是一个很好的前-后合理化的方法，但是可能过度美化了一个干净的论述，而实际上没有影响。
 
 Additionally, early papers seem to intentionally feel pressure to fit ideas into neuroscientific and biological justifications, even where there may not have been any.
 
+此外，早期的论文看起来是倾向于感觉去推动拟合想法成为神经科学和生物判定，甚至其中可能什么也没有。
+
 [Dropout](/02-optimization-and-regularization/04-dropout/02-dropout.ipynb) struck me as the most blatant example of this, as they explain "one possible motivation" for dropout coming from animal sexual behavior, despite their prior explanation in the paper of dropout following from a rather logical line of thinking around regularization.
 
+Dropout工作让我感觉到是最明显的例子，因为这个工作解释“一个可能的动机”关于Dropout是来自动物的性行为，尽管之前的说法在论文中是被描述为来自对正则化的一系列的逻辑思考。
+
 This seems to an attempt to make the architecture appear to correspond with biology after it was designed, rather than it actually serving as a source for inspiration (of course, I could be wrong about this).
+
+这看起来是一种尝试，在架构设计完成后，将其对应到一些生物性上，而不是其设计的灵感来源（当然，我也可能说错了）。
 
 <br />
 
 ### Linear Algebra & Calculus
+## 线性代数和微积分
 
 Most notably, [backpropagation](/01-deep-neural-networks/01-dnn/02-dnn.ipynb) and [LoRA](/04-transformers/05-lora) are directly inspired by the math behind neural networks.
 
+最值得注意到，反向传播和LoRA是直接受到神经网络背后的数学启发。
+
 LoRA (low-rank adaptation) is directly a manipulation on how models are trained by taking advantage of a feature of linear-algebra (decomposing weight matrices into lower dimensionality matrices with fewer trainable parameters).
 
-Similarly, advancements like [Residuals](/02-optimization-and-regularization/03-residuals/02-residuals.ipynb) were directly motivated by the nature of gradient flows within neural networks.
+低秩自适应（LoRA）是去直接操控模型，使得其用到了线性代数的优势去训练（分解权重矩阵成为更低的维度矩阵，有更少的训练参数）。
+
+Similarly, advancements like [Residuals](/02-optimization-and-regularization/03-residuals/02-residuals.ipynb) were directly motivated by the nature of gradient flows within neural networks.、
+
+类似的，Residual的优势是直接受到梯度流在神经网络中的特征启发。
 
 <br />
 
 ### Physics & Information Theory
 
+### 物理和信息论
+
 Notably, [VAEs](/05-image-generation/02-vae/04-vae.ipynb) and [Diffusion](/05-image-generation/03-diffusion/05-diffusion.ipynb) models take inspiration from thermodynamics - specifically Langevin dynamics, as well as probability and information theory.
 
+注意，VAE模型受到动态理论的启发-确切的说是Langevin运动，以及概率和信息论。
+
 These systems involve noisy sampling, and these models turn to approaches used in similarly noisy systems in the real world for inspiration
+
+这些系统涉及了噪声采样，而且这些模型是受到真实世界的噪声的系统的启发，用到了类似的方法。
 
 <br />
 
 ### Engineering
 
+工程化
+
 In practice, most of the innovations in deep learning are actually more motivated by engineering problems in neural network design, and bear only surface-level resemblance to the apparent fields of inspiration.
+
+实际上，大部分的创新在深度学习中实际上是受到神经网络设计中的工程化问题驱动，并只是与哪些明显看似有启发的领域在表面上相似。
 
 <br />
 
 # 4. Intelligence
+# 4. 智能
 
 What can this progression of progress in deep learning tell us about our own intelligence?
 
+这些深度学习中发展中的进步能对人类所拥有的智能有什么作用？
+
 I'll try to be purely empirical here, since it's easy to dip into unbased philosophizing with this topic given it's subjective nature.
+
+我将尝试去单纯的用经验的方式，因为这很容易陷入无基础的哲学思考这些主题而给出其学科性的特征。
 
 As we've disucssed, one way way to view intelligence (motivated by the [Free Energy Principle](https://www.nature.com/articles/nrn2787)) is as a measure of our ability to model complex distributions that describe reality, and then run active inference on these models to accomplish things in the world[^20].
 
+我们之前讨论过，观察智能道路的一种方法（受到自有能量法则的启发）是类似度量我们建模复杂分布去描述现实的能力，并随后做动态推理用在这些模型上去完成现实世界的任务。
+
 It seems that the combination of data about reality (dataset vs. our senses), compute (transistors vs. neurons), and energy (electricity vs. food) along with scale (parameters vs. connections), and of course, an effective learning algorithm, yields systems that appear intelligent.
+
+这看起来是数据的组合方法，包括了现实（数据集对我们的感觉），计算（寄存器对神经元），和能量（电子对食物），以及尺度（参数对连接），当然也包括了有效的学习算法，得到的系统出现了智能性。
 
 Additionally, the efficacy of various inductive biases offered by different architectes may indicate something inherent about the structure of the information they're trying to model.
 
+此外，不同归纳偏置的效率在不同的架构可能预示着我们所尝试的模型的结构固有的特性。
+
 For example, the effectiveness of the attention mechanism raises the question of why this inductive bias alone appears to be so effective at modeling data.
 
+例如，注意力机制的有效性是来自一个问题，为什么这个归纳偏置单独能如此有效的去建模数据。
+
 If intelligence is really just a function of data, compute, energy, and training, then it seems inevitable now that digital intelligence will soon surpass us.
+
+如果智能真的只是一个函数形式的数据，计算，能量和训练，而这现在看起来不可避免的结果是，数字智能将很快超过人类。
 
 <br />
 
 [^20]: This view of intelligence also paints the framework of thinking in the WaitButWhy post [The Cook and the Chef: Musk's Secret Suace](https://waitbutwhy.com/2015/11/the-cook-and-the-chef-musks-secret-sauce.html) particularly well
+这个智能的看法也刻画了一些思想的框架，可以参考WaitButWhy发布的《做饭和厨师：马斯克的秘密王牌，特别的不错。
 
 # 5. Future
+# 5. 未来
 
 We've now reframed the history of progress as the series of advancements that have continually raised the ceiling on the constraints governing digital intelligence.
 
+我们现在已经重新构建了进步史，因为这一系列的进步已经连续的发生并基于那些控制数字智能的约束条件之上。
+
 Everything in the past that has contributed to progress has been determined by the constraints discussed above.
+
+过去的每一件事凡是对这些进步有推进作用，都已经被确定是来自以上讨论的约束。
 
 Importantly, nothing about this changes in the future - **these same 7 constraints will always determine where we're headed, and how close we are to AGI.[^21]**
 
+重点，未来也不会变“同样这7个约束将一直决定我们的方向，以及如何最终实现AGI”
+
 At this point, we've solved the _theoretical problem_ of AGI, in the sense that we know exactly what would get us to AGI[^22].
+
+此时，我们已经解开AGI的理论性问题，意味着我们完全知道什么可以让我们实现AGI。
 
 This was not obvious until the past decade, where we've seen the power of how far deep learning can go.
 
+这在10年之前还不是很明朗，而过去的10年我们已经看到了深度学习的力量能走多远。
+
 The question is now whether we will solve the _engineering_ problem of AGI. Will we be able to keep pushing on all the constraints to keep improving digital intelligence?
+
+现在的问题是，我们是否将解决AGI的工程问题。我们将能去推进所有这些约束来保证数字智能的进步？
 
 Although scaling laws are currently at play and the current path forward is to acquire larger amounts of compute to train larger models, the efficacy of this approach will hit a limit in the future (it's difficult to know when).
 
+尽管放大法则当前是仍然在用，并且当前的路径是去获得更大的算力去训练更大的模型，这个方法的有效性将在未来会碰到上限（很难预测这个时刻）。
+
 It's possible that we may hit a bottleneck in how good models can get based on the quality of the empirical distribution of the internet, in which case we'll have to seek other sources of data.
 
-> [!IMPORTANT]
->
-> It's critical to remember that the core principle of progress in deep learning is that pushing on the 7 constraints will lead to increasingly intelligence systems.
->
-> Though the scaling laws indicate that the current limiting constraints are compute and parameters, these may shift to data and energy over time, which will bring new challenges.
+有可能我们将碰到一个瓶颈，就是一些很好的模型如何基于互联网经验分布的质量得到，其中我们将要去寻找其它的数据源。
 
+> [!IMPORTANT]
+
+>重点
+> It's critical to remember that the core principle of progress in deep learning is that pushing on the 7 constraints will lead to increasingly intelligence systems.
+
+>很关键的是要记住，深度学习的核心进步原则是推进7个约束，这将使得智能系统的进步。
+> Though the scaling laws indicate that the current limiting constraints are compute and parameters, these may shift to data and energy over time, which will bring new challenges.
+尽管放大法则证明了当前的制约因素是算力和参数，而这可能随着时间转移到数据和能源，这将带来新的挑战。
 <br />
 
 [^21]: This is not saying that scaling laws will get us to AGI, but that constantly pushing the constraints will get us to AGI. We may run into bottlenecks that render the scaling laws obselete at some point.
+这不是说放大法则将让我们达到AGI，而是一直要推进这些约束将会实现AGI。我们可能走到瓶颈，在某些时刻放大法则可能会被淘汰。
+
 [^22]: Assuming you believe that the current systems exhibit intelligent behavior, which some people still disagree with.
+加入你相信当前的系统展示了智能的行为，而有一些人仍然不同意。
 
 # Resources
 
